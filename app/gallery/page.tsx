@@ -254,7 +254,7 @@ export default function GalleryPage() {
       {lb && <Lightbox images={lb.images} index={lb.index} onClose={close} onPrev={prev} onNext={next} />}
 
       {/* ── Hero ── */}
-      <header className="relative overflow-hidden" style={{ backgroundColor: "#0A0806", minHeight: "60vw", maxHeight: "85vh", display: "flex", alignItems: "flex-end" }}>
+      <header className="relative overflow-hidden" style={{ backgroundColor: "#0A0806", height: "clamp(320px, 55vw, 520px)", display: "flex", alignItems: "flex-end" }}>
         {/* Background collage */}
         <div className="absolute inset-0 grid grid-cols-3 grid-rows-2 gap-0.5 opacity-40">
           {[eventImages[0], eventImages[4], eventImages[8], endsImages[0], eventImages[15], endsImages[4]].map((img, i) => (

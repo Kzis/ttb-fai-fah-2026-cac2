@@ -105,6 +105,21 @@ export default function ComingSoonPage() {
             </svg>
           </a>
           <a
+            href="/ttb-fai-fah-2026-cac2/gallery/"
+            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium transition-colors active:scale-[0.98]"
+            style={{
+              color: "var(--color-fah)",
+              border: "1px solid var(--color-fah-pale)",
+              borderRadius: "6px",
+              backgroundColor: "var(--color-fah-pale)",
+            }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+            </svg>
+            ดูภาพบรรยากาศ
+          </a>
+          <a
             href="https://ttbfoundation.org"
             target="_blank"
             rel="noopener noreferrer"

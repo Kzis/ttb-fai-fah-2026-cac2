@@ -1,0 +1,4155 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ผลวัดความรู้การเงิน รุ่นพี่การเงิน</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anuphan:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#f4f6f8; --card:#ffffff; --card-2:#fafbfc;
+  --ink:#101720; --ink-2:#4a5563; --ink-3:#7b8794;
+  --line:#e0e5ea; --line-2:#eef1f4;
+  --brand:#1f3864;
+  --pre:#2a78d6; --post:#eb6834;
+  --good:#1baf7a; --bad:#e34948; --flat:#9aa5b1;
+  --grid:#e8ecf0;
+  --shadow:0 1px 2px rgba(16,23,32,.05), 0 8px 24px -16px rgba(16,23,32,.25);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0e1319; --card:#161c24; --card-2:#1b222b;
+    --ink:#f2f5f8; --ink-2:#b3bdc8; --ink-3:#7e8b98;
+    --line:#28313c; --line-2:#1f2731;
+    --brand:#8fb4ee;
+    --pre:#3987e5; --post:#d95926;
+    --good:#199e70; --bad:#e66767; --flat:#6b7681;
+    --grid:#232c36;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -18px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0e1319; --card:#161c24; --card-2:#1b222b;
+  --ink:#f2f5f8; --ink-2:#b3bdc8; --ink-3:#7e8b98;
+  --line:#28313c; --line-2:#1f2731;
+  --brand:#8fb4ee;
+  --pre:#3987e5; --post:#d95926;
+  --good:#199e70; --bad:#e66767; --flat:#6b7681;
+  --grid:#232c36;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -18px rgba(0,0,0,.9);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"IBM Plex Sans Thai","Noto Sans Thai",system-ui,sans-serif;
+  font-size:15px; line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+.num{font-family:"IBM Plex Mono",ui-monospace,monospace; font-variant-numeric:tabular-nums}
+.wrap{max-width:1160px; margin:0 auto; padding:0 24px 96px}
+
+/* header */
+header.top{
+  border-bottom:1px solid var(--line); background:var(--card);
+  padding:38px 0 30px; margin-bottom:28px;
+}
+.eyebrow{
+  font-size:11.5px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink-3); font-weight:600; margin:0 0 10px;
+}
+h1{
+  font-family:Anuphan,"IBM Plex Sans Thai",sans-serif; font-weight:700;
+  font-size:clamp(28px,4.2vw,42px); line-height:1.2; margin:0 0 10px;
+  letter-spacing:-.01em; text-wrap:balance;
+}
+.sub{color:var(--ink-2); margin:0; max-width:60ch; font-size:15px}
+
+/* sticky nav */
+nav.jump{
+  position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+  margin-bottom:32px; overflow-x:auto;
+}
+nav.jump ul{display:flex; gap:2px; list-style:none; margin:0 auto; padding:0 24px; max-width:1160px}
+nav.jump a{
+  display:block; padding:12px 12px; font-size:13.5px; font-weight:500;
+  color:var(--ink-2); text-decoration:none; white-space:nowrap;
+  border-bottom:2px solid transparent;
+}
+nav.jump a:hover{color:var(--ink); border-bottom-color:var(--line)}
+nav.jump a:focus-visible{outline:2px solid var(--pre); outline-offset:-2px}
+
+section{margin-bottom:44px; scroll-margin-top:60px}
+h2{
+  font-family:Anuphan,"IBM Plex Sans Thai",sans-serif; font-weight:600;
+  font-size:21px; margin:0 0 4px; letter-spacing:-.005em;
+}
+.sec-note{color:var(--ink-3); font-size:13.5px; margin:0 0 18px; max-width:70ch}
+
+.card{
+  background:var(--card); border:1px solid var(--line); border-radius:10px;
+  padding:22px 24px; box-shadow:var(--shadow);
+}
+
+/* stat tiles */
+.tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:14px}
+.tile{
+  background:var(--card); border:1px solid var(--line); border-radius:10px;
+  padding:18px 20px 16px; box-shadow:var(--shadow); position:relative; overflow:hidden;
+}
+.tile .lab{font-size:12.5px; color:var(--ink-3); font-weight:500; margin-bottom:6px}
+.tile .big{font-family:"IBM Plex Mono",monospace; font-size:32px; font-weight:600; line-height:1.05; letter-spacing:-.02em}
+.tile .foot{font-size:12.5px; color:var(--ink-2); margin-top:6px}
+.tile .arrow{font-weight:600}
+.up{color:var(--good)} .down{color:var(--bad)} .same{color:var(--flat)}
+
+/* legend */
+.legend{display:flex; gap:18px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--ink-2); margin-bottom:14px}
+.legend .k{display:inline-flex; gap:7px; align-items:center}
+.swatch{width:11px; height:11px; border-radius:3px; display:inline-block}
+
+.scrollx{overflow-x:auto}
+svg{display:block; max-width:100%}
+.gridline{stroke:var(--grid); stroke-width:1}
+.axis-text{fill:var(--ink-3); font-size:11.5px; font-family:"IBM Plex Mono",monospace}
+.cat-text{fill:var(--ink-2); font-size:12.5px; font-family:"IBM Plex Sans Thai",sans-serif}
+.val-text{fill:var(--ink); font-size:11.5px; font-family:"IBM Plex Mono",monospace; font-weight:500}
+
+/* tooltip */
+#tip{
+  position:fixed; pointer-events:none; opacity:0; transition:opacity .12s;
+  background:var(--card); color:var(--ink); border:1px solid var(--line);
+  border-radius:8px; padding:9px 12px; font-size:12.5px; line-height:1.5;
+  box-shadow:0 8px 28px -10px rgba(0,0,0,.4); z-index:99; max-width:280px;
+}
+#tip b{font-weight:600}
+#tip .r{display:flex; justify-content:space-between; gap:14px}
+
+/* tables */
+table{border-collapse:collapse; width:100%; font-size:13.5px}
+th{
+  text-align:left; font-weight:600; font-size:12px; color:var(--ink-3);
+  padding:9px 10px; border-bottom:1px solid var(--line); white-space:nowrap;
+  text-transform:uppercase; letter-spacing:.05em;
+}
+td{padding:8px 10px; border-bottom:1px solid var(--line-2); white-space:nowrap}
+tbody tr:hover{background:var(--card-2)}
+td.n{text-align:right; font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums}
+.pill{
+  display:inline-block; padding:1px 9px; border-radius:999px; font-size:11.5px; font-weight:600;
+  border:1px solid transparent;
+}
+.pill.up{background:color-mix(in srgb,var(--good) 14%,transparent); color:var(--good); border-color:color-mix(in srgb,var(--good) 32%,transparent)}
+.pill.down{background:color-mix(in srgb,var(--bad) 14%,transparent); color:var(--bad); border-color:color-mix(in srgb,var(--bad) 32%,transparent)}
+.pill.same{background:color-mix(in srgb,var(--flat) 14%,transparent); color:var(--flat); border-color:color-mix(in srgb,var(--flat) 32%,transparent)}
+
+/* tabs */
+.tabs{display:flex; gap:6px; margin-bottom:14px; flex-wrap:wrap}
+.tabs button{
+  font:inherit; font-size:13px; font-weight:500; padding:6px 14px; border-radius:7px;
+  border:1px solid var(--line); background:var(--card); color:var(--ink-2); cursor:pointer;
+}
+.tabs button[aria-selected="true"]{background:var(--brand); border-color:var(--brand); color:#fff}
+:root[data-theme="dark"] .tabs button[aria-selected="true"],
+:root:not([data-theme="light"]) .tabs button[aria-selected="true"]{color:#0e1319}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .tabs button[aria-selected="true"]{color:#fff}}
+.tabs button:focus-visible{outline:2px solid var(--pre); outline-offset:2px}
+
+.beh{margin-bottom:26px}
+.beh h3{font-size:14.5px; font-weight:600; margin:0 0 10px; color:var(--ink)}
+.brow{display:grid; grid-template-columns:minmax(140px,1fr) 2.2fr; gap:12px; align-items:center; margin-bottom:7px; font-size:13px}
+.bbars{display:flex; flex-direction:column; gap:3px}
+.bbar{display:flex; align-items:center; gap:8px; height:13px}
+.bbar .fill{height:9px; border-radius:0 4px 4px 0; min-width:2px}
+.bbar .v{font-size:11px; color:var(--ink-3); font-family:"IBM Plex Mono",monospace}
+
+footer{border-top:1px solid var(--line); padding-top:22px; color:var(--ink-3); font-size:13px}
+footer ol{padding-left:20px; margin:10px 0 0} footer li{margin-bottom:5px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important; animation:none!important}}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="wrap" style="padding-bottom:0">
+    <p class="eyebrow">Pre Test → Post Test · โครงการรุ่นพี่การเงิน</p>
+    <h1>ผลวัดความรู้ทางการเงิน</h1>
+    <p class="sub">โรงเรียนเตรียมอุดมศึกษาพัฒนาการ ยานนาเวศ · แบบทดสอบความรู้ทางการเงิน 25 ข้อ และพฤติกรรมการเงิน 5 ข้อ · ข้อมูล ณ 26 ส.ค. 2569</p>
+  </div>
+</header>
+
+<nav class="jump" aria-label="ไปยังหัวข้อ">
+  <ul>
+    <li><a href="#summary">สรุปภาพรวม</a></li>
+    <li><a href="#dist">การกระจายคะแนน</a></li>
+    <li><a href="#people">รายบุคคล</a></li>
+    <li><a href="#topics">รายหมวด</a></li>
+    <li><a href="#items">รายข้อ</a></li>
+    <li><a href="#rooms">รายห้อง</a></li>
+    <li><a href="#behaviour">พฤติกรรมการเงิน</a></li>
+    <li><a href="#table">ตารางข้อมูล</a></li>
+    <li><a href="#method">วิธีคำนวณ</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+  <section id="summary">
+    <h2>สรุปภาพรวม</h2>
+    <p class="sec-note">ตัวเลขผลต่างคำนวณจากกลุ่มที่ทำครบทั้งสองครั้งเท่านั้น เพื่อเทียบบนคนกลุ่มเดียวกัน</p>
+    <div class="tiles" id="tiles"></div>
+  </section>
+
+  <section id="dist">
+    <h2>การกระจายคะแนน</h2>
+    <p class="sec-note">จำนวนผู้ทำแบบทดสอบในแต่ละช่วงคะแนน (เต็ม 25) — นับผู้ทำทั้งหมดของแต่ละรอบ</p>
+    <div class="card">
+      <div class="legend" id="leg1"></div>
+      <div class="scrollx"><div id="chart-dist"></div></div>
+    </div>
+  </section>
+
+  <section id="people">
+    <h2>คะแนนรายบุคคล — Pre → Post</h2>
+    <p class="sec-note">เฉพาะผู้ที่ทำครบทั้งสองครั้ง เรียงตามส่วนต่างมากไปน้อย · เส้นเชื่อมแสดงทิศทางการเปลี่ยนแปลง</p>
+    <div class="card">
+      <div class="legend" id="leg2"></div>
+      <div class="scrollx"><div id="chart-dumbbell"></div></div>
+    </div>
+  </section>
+
+  <section id="topics">
+    <h2>ความรู้รายหมวด</h2>
+    <p class="sec-note">ร้อยละของผู้ตอบถูก เฉลี่ยจากข้อในแต่ละหมวด</p>
+    <div class="card">
+      <div class="legend" id="leg3"></div>
+      <div class="scrollx"><div id="chart-topics"></div></div>
+    </div>
+  </section>
+
+  <section id="items">
+    <h2>วิเคราะห์รายข้อ</h2>
+    <p class="sec-note">ข้อที่แถบสั้นและส่วนต่างติดลบ คือหัวข้อที่ควรทบทวนในรอบถัดไป</p>
+    <div class="card">
+      <div class="tabs" id="item-tabs" role="tablist">
+        <button role="tab" data-sort="q" aria-selected="true">เรียงตามข้อ</button>
+        <button role="tab" data-sort="delta" aria-selected="false">เรียงตามส่วนต่าง</button>
+        <button role="tab" data-sort="post" aria-selected="false">เรียงตาม % ถูก Post</button>
+      </div>
+      <div class="legend" id="leg4"></div>
+      <div class="scrollx"><div id="chart-items"></div></div>
+    </div>
+  </section>
+
+  <section id="rooms">
+    <h2>เปรียบเทียบตามห้องเรียน</h2>
+    <p class="sec-note">ค่าเฉลี่ยคะแนนของแต่ละห้อง · คอลัมน์ส่วนต่างใช้เฉพาะผู้ที่จับคู่ได้</p>
+    <div class="card scrollx"><table id="tbl-rooms"></table></div>
+  </section>
+
+  <section id="behaviour">
+    <h2>พฤติกรรมการเงิน</h2>
+    <p class="sec-note">คำถาม 5 ข้อ ไม่คิดคะแนน · แสดงเป็นสัดส่วนของผู้ตอบในแต่ละรอบ</p>
+    <div class="card">
+      <div class="legend" id="leg5"></div>
+      <div id="beh-blocks"></div>
+    </div>
+  </section>
+
+  <section id="table">
+    <h2>ตารางข้อมูล</h2>
+    <p class="sec-note">ข้อมูลชุดเดียวกับไฟล์ Excel · ใช้อ้างอิงรายชื่อและคะแนนดิบ</p>
+    <div class="card">
+      <div class="tabs" id="tbl-tabs" role="tablist">
+        <button role="tab" data-t="cmp" aria-selected="true">เปรียบเทียบ Pre–Post</button>
+        <button role="tab" data-t="pre" aria-selected="false">Pre Test</button>
+        <button role="tab" data-t="post" aria-selected="false">Post Test</button>
+        <button role="tab" data-t="key" aria-selected="false">เฉลย</button>
+      </div>
+      <div class="scrollx"><table id="tbl-main"></table></div>
+    </div>
+  </section>
+
+  <section id="method">
+    <footer>
+      <strong style="color:var(--ink)">วิธีคำนวณและข้อสมมติ</strong>
+      <ol>
+        <li>Google Form ไม่ได้ตั้งเป็นโหมด Quiz จึงไม่มีเฉลยติดมากับไฟล์ — เฉลยชุดนี้วิเคราะห์จากตัวโจทย์ ดูได้ในแท็บ “เฉลย” และแก้ไขได้</li>
+        <li>ให้คะแนนข้อละ 1 คะแนน เต็ม 25 คะแนน เฉพาะส่วนความรู้ทางการเงิน ส่วนพฤติกรรมการเงินไม่คิดคะแนน</li>
+        <li>ข้ออัตนัย (ข้อ 3, 10, 11, 13, 19, 20) ตรวจโดยดึงตัวเลขจากข้อความคำตอบ ถือว่าถูกเมื่อมีตัวเลขที่ถูกต้องปรากฏ · ข้อ 3 ยึดดอกเบี้ยทบต้น = 121 บาท</li>
+        <li>คำตอบว่าง “-” “ไม่รู้” “ไม่ทราบ” นับเป็น 0 คะแนน · ตัดแถวทดสอบระบบ (ชื่อ Test) ออก</li>
+        <li>Pre Test มีผู้ส่งซ้ำ 1 คน ใช้การส่งครั้งแรก · จับคู่ Pre–Post ด้วยชื่อ-นามสกุลหลังตัดคำนำหน้า และเทียบชื่อที่สะกดใกล้เคียง</li>
+        <li>Normalized Gain = (Post − Pre) ÷ (25 − Pre) เป็นตัวชี้วัดที่หักผลของเพดานคะแนนออก (&lt;0.3 ต่ำ · 0.3–0.7 กลาง · &gt;0.7 สูง)</li>
+      </ol>
+    </footer>
+  </section>
+</div>
+
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script>
+const DATA = {
+  "meta": {
+    "project": "โครงการรุ่นพี่การเงิน",
+    "school": "โรงเรียนเตรียมอุดมศึกษาพัฒนาการ ยานนาเวศ",
+    "maxScore": 25,
+    "generated": "2026-08-26",
+    "note": "เฉลยจัดทำโดยวิเคราะห์จากตัวโจทย์ (Google Form ไม่ได้ตั้งเป็นโหมด Quiz)"
+  },
+  "summary": {
+    "pre": {
+      "n": 28,
+      "mean": 14.04,
+      "pct": 0.5614,
+      "median": 14.0,
+      "max": 23,
+      "min": 4,
+      "sd": 5.41
+    },
+    "post": {
+      "n": 45,
+      "mean": 18.22,
+      "pct": 0.7289,
+      "median": 19,
+      "max": 25,
+      "min": 4,
+      "sd": 4.83
+    },
+    "matched": {
+      "n": 22,
+      "meanPre": 14.55,
+      "meanPost": 18.18,
+      "meanDelta": 3.64,
+      "growthRate": 0.25,
+      "meanNormGain": 0.175,
+      "improved": 17,
+      "same": 0,
+      "declined": 5,
+      "improvedPct": 0.7727
+    }
+  },
+  "preScores": [
+    {
+      "name": "รีมา เชรฐตรี",
+      "nick": "รีมา",
+      "room": "ม.4/7",
+      "date": "2026-08-22 13:11",
+      "score": 23,
+      "pct": 0.92,
+      "items": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "นางสาวภัทรจารีย์  คงเยือกเย็น",
+      "nick": "ไอซ์",
+      "room": "ม.4/8",
+      "date": "2026-08-21 15:39",
+      "score": 22,
+      "pct": 0.88,
+      "items": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "นส.มนฑิรา คะครรัมย์",
+      "nick": "23.0",
+      "room": "ม.4/7",
+      "date": "2026-08-22 00:04",
+      "score": 22,
+      "pct": 0.88,
+      "items": [
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "นายสรายุทธ โยธา",
+      "nick": "ยุทธ",
+      "room": "ม.4/7",
+      "date": "2026-08-23 10:23",
+      "score": 22,
+      "pct": 0.88,
+      "items": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "ภาณุวัฒน์ ตั้งยศพัฒน์",
+      "nick": "เตอร์",
+      "room": "ม.4/7",
+      "date": "2026-08-21 23:30",
+      "score": 20,
+      "pct": 0.8,
+      "items": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "นาย ศรัณย์ เสาใสศรี",
+      "nick": "กันต์",
+      "room": "ม.4/8",
+      "date": "2026-08-21 14:37",
+      "score": 19,
+      "pct": 0.76,
+      "items": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "สุปรีดา เนืองนุช",
+      "nick": "คิว",
+      "room": "ม.4/7",
+      "date": "2026-08-22 10:56",
+      "score": 19,
+      "pct": 0.76,
+      "items": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "นส ภัคจิรา ปรางงาม",
+      "nick": "น้ำ",
+      "room": "ม.4/7",
+      "date": "2026-08-24 07:47",
+      "score": 18,
+      "pct": 0.72,
+      "items": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "ณัฐณิชา ศรีเสริม",
+      "nick": "เนย",
+      "room": "ม.4/8",
+      "date": "2026-08-24 08:02",
+      "score": 17,
+      "pct": 0.68,
+      "items": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "พิทยุตม์ สุนทรสุข",
+      "nick": "ม่อน",
+      "room": "ม.4/7",
+      "date": "2026-08-24 08:02",
+      "score": 16,
+      "pct": 0.64,
+      "items": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "วรวุฒิ หมื่นรัตน์",
+      "nick": "เก้า",
+      "room": "ม.4/8",
+      "date": "2026-08-21 15:40",
+      "score": 15,
+      "pct": 0.6,
+      "items": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "นางสาวบัณฑิตา คงใจ",
+      "nick": "ข้าวฟ่าง",
+      "room": "ม.4/7",
+      "date": "2026-08-24 08:04",
+      "score": 15,
+      "pct": 0.6,
+      "items": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "อาทิตย์ บูรณะไพบูลย์",
+      "nick": "เบส",
+      "room": "ม.4/7",
+      "date": "2026-08-24 12:21",
+      "score": 15,
+      "pct": 0.6,
+      "items": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "นนทกรณ์ รุ่งทัพพ่วง",
+      "nick": "กร(น้องนนนี่)🫶🏻",
+      "room": "ม.4/8",
+      "date": "2026-08-21 16:38",
+      "score": 14,
+      "pct": 0.56,
+      "items": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "น.ส.สุวิมล สิทธิพรหม",
+      "nick": "กระต่าย",
+      "room": "ม.4/8",
+      "date": "2026-08-21 17:19",
+      "score": 14,
+      "pct": 0.56,
+      "items": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "นาย ปิยะวัชร์ พันธ์ทอง",
+      "nick": "ตัง",
+      "room": "ม.4/7",
+      "date": "2026-08-24 08:05",
+      "score": 14,
+      "pct": 0.56,
+      "items": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "น.ส.ปิยะฉัตร อัครคชาเสนีย์",
+      "nick": "เฟรม",
+      "room": "ม.4/7",
+      "date": "2026-08-23 14:04",
+      "score": 13,
+      "pct": 0.52,
+      "items": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "เทพนิมิตร ภู่ระหงษ์",
+      "nick": "ต้นกล้า",
+      "room": "ม.4/7",
+      "date": "2026-08-24 07:57",
+      "score": 13,
+      "pct": 0.52,
+      "items": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "ธารารินทร์ พลนำ",
+      "nick": "นํ้า",
+      "room": "ม.4/8",
+      "date": "2026-08-24 08:15",
+      "score": 12,
+      "pct": 0.48,
+      "items": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "ณิชชา นาสมใจ",
+      "nick": "น้ำ",
+      "room": "ม.4/7",
+      "date": "2026-08-22 21:24",
+      "score": 11,
+      "pct": 0.44,
+      "items": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "เกศกนก ลอยนรินทร์",
+      "nick": "จามิว",
+      "room": "ม.4/8",
+      "date": "2026-08-24 07:57",
+      "score": 11,
+      "pct": 0.44,
+      "items": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "สิทธิชัย บุญนนท์",
+      "nick": "โด้",
+      "room": "ม.4/8",
+      "date": "2026-08-24 08:44",
+      "score": 9,
+      "pct": 0.36,
+      "items": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "จิรายุ บุดตะคุ",
+      "nick": "พีพี",
+      "room": "ม.4/8",
+      "date": "2026-08-24 08:12",
+      "score": 8,
+      "pct": 0.32,
+      "items": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "กิตติยา ใจเย็น",
+      "nick": "เเป้ง",
+      "room": "ม.4/7",
+      "date": "2026-08-24 08:17",
+      "score": 8,
+      "pct": 0.32,
+      "items": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "นราวิชญ์ ลำภูพวง",
+      "nick": "แมนยู",
+      "room": "ม.4/7",
+      "date": "2026-08-24 08:07",
+      "score": 7,
+      "pct": 0.28,
+      "items": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "ปุณยวีร์  ศรีแก้วอินทร์",
+      "nick": "เม",
+      "room": "ม.4/8",
+      "date": "2026-08-21 16:55",
+      "score": 6,
+      "pct": 0.24,
+      "items": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "น.สศวรรยา แน๊ะหมัด",
+      "nick": "ฟ้า",
+      "room": "ม.4/7",
+      "date": "2026-08-24 07:57",
+      "score": 6,
+      "pct": 0.24,
+      "items": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "ศุภวิชญ์ มูลฑา",
+      "nick": "แมนยู",
+      "room": "ม.4/8",
+      "date": "2026-08-24 07:57",
+      "score": 4,
+      "pct": 0.16,
+      "items": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ]
+    }
+  ],
+  "postScores": [
+    {
+      "name": "ศุภชัย ละม่อม",
+      "nick": "บอย",
+      "room": "ม.4/8",
+      "date": "2026-08-25 14:52",
+      "score": 25,
+      "pct": 1.0,
+      "items": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "ปองคุณ ช้างสุวรรณ",
+      "nick": "ฟีโน่",
+      "room": "ม.4/8",
+      "date": "2026-08-25 14:36",
+      "score": 24,
+      "pct": 0.96,
+      "items": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "อดิศร สุมัน",
+      "nick": "ฟิว",
+      "room": "ม.4/8",
+      "date": "2026-08-25 14:38",
+      "score": 24,
+      "pct": 0.96,
+      "items": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "ณฐกร หริณนิติสุข",
+      "nick": "อังเดร",
+      "room": "ม.4/8",
+      "date": "2026-08-25 14:36",
+      "score": 23,
+      "pct": 0.92,
+      "items": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "นางสาว มนัญญา พาจะโปะ",
+      "nick": "พลอย",
+      "room": "ม.4/8",
+      "date": "2026-08-25 14:37",
+      "score": 23,
+      "pct": 0.92,
+      "items": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "ศรัญญา ผิวงาม",
+      "nick": "ออนิว",
+      "room": "ม.4/8",
+      "date": "2026-08-25 14:37",
+      "score": 23,
+      "pct": 0.92,
+      "items": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "วรภพ ส่งอิ่ม",
+      "nick": "กัส",
+      "room": "ม.4/8",
+      "date": "2026-08-25 14:39",
+      "score": 23,
+      "pct": 0.92,
+      "items": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "ภาณุวัฒน์ ตั้งยศพัฒน์",
+      "nick": "เตอร์",
+      "room": "ม.4/7",
+      "date": "2026-08-25 14:37",
+      "score": 22,
+      "pct": 0.88,
+      "items": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "อักษรินทร์ ธีรภวดีธนชุกิจ",
+      "nick": "เเชมป์",
+      "room": "ม.4/8",
+      "date": "2026-08-25 14:38",
+      "score": 22,
+      "pct": 0.88,
+      "items": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "นส ภัคจิรา ปรางงาม",
+      "nick": "น้ำ",
+      "room": "ม.4/7",
+      "date": "2026-08-25 14:38",
+      "score": 22,
+      "pct": 0.88,
+      "items": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "ธนาภัทร์ รอดเลิศไร่",
+      "nick": "แมทธิว",
+      "room": "ม.4/8",
+      "date": "2026-08-25 14:42",
+      "score": 22,
+      "pct": 0.88,
+      "items": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "นายวีรภัทร​ ชาตริตานนท์",
+      "nick": "ติม",
+      "room": "ม.4/7",
+      "date": "2026-08-25 14:45",
+      "score": 22,
+      "pct": 0.88,
+      "items": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "นส นพวรรณ เอี่ยมมา",
+      "nick": "แพรวา",
+      "room": "ม.4/8",
+      "date": "2026-08-25 14:49",
+      "score": 22,
+      "pct": 0.88,
+      "items": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "พิทยุตม์ สุนทรสุข",
+      "nick": "ม่อน",
+      "room": "ม.4/7",
+      "date": "2026-08-25 14:36",
+      "score": 21,
+      "pct": 0.84,
+      "items": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "เทพนิมิตร ภู่ระหงษ์",
+      "nick": "ต้นกล้า",
+      "room": "ม.4/7",
+      "date": "2026-08-25 14:42",
+      "score": 21,
+      "pct": 0.84,
+      "items": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "นส.มนฑิรา คะครรัมย์",
+      "nick": "แก้ม",
+      "room": "ม.4/7",
+      "date": "2026-08-25 14:48",
+      "score": 21,
+      "pct": 0.84,
+      "items": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "น.ส.สุวิมล สิทธิพรหม",
+      "nick": "กระต่าย",
+      "room": "ม.4/8",
+      "date": "2026-08-25 14:50",
+      "score": 21,
+      "pct": 0.84,
+      "items": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "นายสรายุทธ โยธา",
+      "nick": "ยุทธ",
+      "room": "ม.4/7",
+      "date": "2026-08-25 14:33",
+      "score": 20,
+      "pct": 0.8,
+      "items": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "นางสาวบัณฑิตา คงใจ",
+      "nick": "ข้าวฟ่าง",
+      "room": "ม.4/7",
+      "date": "2026-08-25 14:34",
+      "score": 20,
+      "pct": 0.8,
+      "items": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "ณัฐณิชา ศรีเสริม",
+      "nick": "เนย",
+      "room": "ม.4/8",
+      "date": "2026-08-25 14:49",
+      "score": 20,
+      "pct": 0.8,
+      "items": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "อาทิตย์ บูรณะไพบูลย์",
+      "nick": "เบส",
+      "room": "ม.4/7",
+      "date": "2026-08-25 14:34",
+      "score": 19,
+      "pct": 0.76,
+      "items": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "รีมา เขรฐตรี",
+      "nick": "รีมา",
+      "room": "ม.4/7",
+      "date": "2026-08-25 14:36",
+      "score": 19,
+      "pct": 0.76,
+      "items": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "ศวรรยา แน๊ะหมัด",
+      "nick": "ฟ้า",
+      "room": "ม.4/7",
+      "date": "2026-08-25 14:40",
+      "score": 19,
+      "pct": 0.76,
+      "items": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "นาย วัณณุวรรธน์ เจริญอุดมผล",
+      "nick": "เบส",
+      "room": "ม.4/7",
+      "date": "2026-08-25 14:43",
+      "score": 19,
+      "pct": 0.76,
+      "items": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "อภิญญา พันกาฬสินธุ์",
+      "nick": "เดือน",
+      "room": "ม.4/7",
+      "date": "2026-08-25 14:44",
+      "score": 19,
+      "pct": 0.76,
+      "items": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "สรานีย์ พวงแก้ว",
+      "nick": "กอลั่ม",
+      "room": "ม.4/8",
+      "date": "2026-08-25 14:45",
+      "score": 19,
+      "pct": 0.76,
+      "items": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "อุษามณี ฉุนกล้า",
+      "nick": "เหมย",
+      "room": "ม.4/8",
+      "date": "2026-08-25 14:45",
+      "score": 19,
+      "pct": 0.76,
+      "items": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "ศรัณย์ เสาใสศรี",
+      "nick": "กันต์",
+      "room": "ม.4/8",
+      "date": "2026-08-25 14:36",
+      "score": 18,
+      "pct": 0.72,
+      "items": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "นนทกรณ์ รุ่งทัพพ่วง",
+      "nick": "กร",
+      "room": "ม.4/8",
+      "date": "2026-08-25 14:36",
+      "score": 18,
+      "pct": 0.72,
+      "items": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "ณิชชา นาสมใจ",
+      "nick": "น้ำ",
+      "room": "ม.4/7",
+      "date": "2026-08-25 14:38",
+      "score": 18,
+      "pct": 0.72,
+      "items": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "วรวิทย์ วงศ์กาฬสินธุ",
+      "nick": "กัส",
+      "room": "ม.4/7",
+      "date": "2026-08-25 14:48",
+      "score": 18,
+      "pct": 0.72,
+      "items": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "สุปรีดา เนืองนุช",
+      "nick": "คิว",
+      "room": "ม.4/7",
+      "date": "2026-08-25 14:36",
+      "score": 17,
+      "pct": 0.68,
+      "items": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "วรวุฒิ หมื่นรัตน์",
+      "nick": "เก้า",
+      "room": "ม.4/8",
+      "date": "2026-08-25 14:38",
+      "score": 17,
+      "pct": 0.68,
+      "items": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "เอกรินทร์ ศรีเหล็กเพ็ชร์",
+      "nick": "เคน",
+      "room": "ม.4/8",
+      "date": "2026-08-25 14:45",
+      "score": 17,
+      "pct": 0.68,
+      "items": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "กิตติยา ใจเย็น",
+      "nick": "เเป้ง",
+      "room": "ม.4/7",
+      "date": "2026-08-25 14:49",
+      "score": 17,
+      "pct": 0.68,
+      "items": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "ธารารินทร์ พลนำ",
+      "nick": "นํ้า",
+      "room": "ม.4/8",
+      "date": "2026-08-25 14:43",
+      "score": 15,
+      "pct": 0.6,
+      "items": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "นาย ธนวิญท์ จันทนา",
+      "nick": "เจฟ",
+      "room": "ม.4/7",
+      "date": "2026-08-25 14:40",
+      "score": 14,
+      "pct": 0.56,
+      "items": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "ศุภวิชญ์ มูลฑา",
+      "nick": "แมนยู",
+      "room": "ม.4/8",
+      "date": "2026-08-25 14:38",
+      "score": 13,
+      "pct": 0.52,
+      "items": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "สิทธิชัย บุญนนท์",
+      "nick": "โด้",
+      "room": "ม.4/8",
+      "date": "2026-08-25 14:39",
+      "score": 13,
+      "pct": 0.52,
+      "items": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "นาย อรรถพันธ์ คณะวาปี",
+      "nick": "อาลีฟ,สปาย",
+      "room": "ม.4/7",
+      "date": "2026-08-25 14:39",
+      "score": 12,
+      "pct": 0.48,
+      "items": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "เอกวิญญ์ ธีรภวดีธนชูกิจ",
+      "nick": "ชิน",
+      "room": "ม.4/7",
+      "date": "2026-08-25 14:40",
+      "score": 10,
+      "pct": 0.4,
+      "items": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "จิรายุ บุดตะคุ",
+      "nick": "พีพี",
+      "room": "ม.4/8",
+      "date": "2026-08-25 14:36",
+      "score": 9,
+      "pct": 0.36,
+      "items": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "บัณฑิตา ปุราชะคึง",
+      "nick": "อีฟ",
+      "room": "ม.4/7",
+      "date": "2026-08-25 14:36",
+      "score": 9,
+      "pct": 0.36,
+      "items": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "ณัฐกรณ์ หีบแก้ว",
+      "nick": "ปิ๊ก",
+      "room": "ม.4/7",
+      "date": "2026-08-25 14:37",
+      "score": 7,
+      "pct": 0.28,
+      "items": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "ณัฐดนัย  บุญนก",
+      "nick": "เฟิส",
+      "room": "ม.4/8",
+      "date": "2026-08-25 14:41",
+      "score": 4,
+      "pct": 0.16,
+      "items": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    }
+  ],
+  "comparison": [
+    {
+      "name": "น.สศวรรยา แน๊ะหมัด",
+      "nick": "ฟ้า",
+      "room": "ม.4/7",
+      "pre": 6,
+      "post": 19,
+      "delta": 13,
+      "pctChange": 2.1667,
+      "normGain": 0.6842,
+      "status": "เพิ่มขึ้น"
+    },
+    {
+      "name": "ศุภวิชญ์ มูลฑา",
+      "nick": "แมนยู",
+      "room": "ม.4/8",
+      "pre": 4,
+      "post": 13,
+      "delta": 9,
+      "pctChange": 2.25,
+      "normGain": 0.4286,
+      "status": "เพิ่มขึ้น"
+    },
+    {
+      "name": "กิตติยา ใจเย็น",
+      "nick": "เเป้ง",
+      "room": "ม.4/7",
+      "pre": 8,
+      "post": 17,
+      "delta": 9,
+      "pctChange": 1.125,
+      "normGain": 0.5294,
+      "status": "เพิ่มขึ้น"
+    },
+    {
+      "name": "เทพนิมิตร ภู่ระหงษ์",
+      "nick": "ต้นกล้า",
+      "room": "ม.4/7",
+      "pre": 13,
+      "post": 21,
+      "delta": 8,
+      "pctChange": 0.6154,
+      "normGain": 0.6667,
+      "status": "เพิ่มขึ้น"
+    },
+    {
+      "name": "น.ส.สุวิมล สิทธิพรหม",
+      "nick": "กระต่าย",
+      "room": "ม.4/8",
+      "pre": 14,
+      "post": 21,
+      "delta": 7,
+      "pctChange": 0.5,
+      "normGain": 0.6364,
+      "status": "เพิ่มขึ้น"
+    },
+    {
+      "name": "ณิชชา นาสมใจ",
+      "nick": "น้ำ",
+      "room": "ม.4/7",
+      "pre": 11,
+      "post": 18,
+      "delta": 7,
+      "pctChange": 0.6364,
+      "normGain": 0.5,
+      "status": "เพิ่มขึ้น"
+    },
+    {
+      "name": "พิทยุตม์ สุนทรสุข",
+      "nick": "ม่อน",
+      "room": "ม.4/7",
+      "pre": 16,
+      "post": 21,
+      "delta": 5,
+      "pctChange": 0.3125,
+      "normGain": 0.5556,
+      "status": "เพิ่มขึ้น"
+    },
+    {
+      "name": "นางสาวบัณฑิตา คงใจ",
+      "nick": "ข้าวฟ่าง",
+      "room": "ม.4/7",
+      "pre": 15,
+      "post": 20,
+      "delta": 5,
+      "pctChange": 0.3333,
+      "normGain": 0.5,
+      "status": "เพิ่มขึ้น"
+    },
+    {
+      "name": "นนทกรณ์ รุ่งทัพพ่วง",
+      "nick": "กร(น้องนนนี่)🫶🏻",
+      "room": "ม.4/8",
+      "pre": 14,
+      "post": 18,
+      "delta": 4,
+      "pctChange": 0.2857,
+      "normGain": 0.3636,
+      "status": "เพิ่มขึ้น"
+    },
+    {
+      "name": "นส ภัคจิรา ปรางงาม",
+      "nick": "น้ำ",
+      "room": "ม.4/7",
+      "pre": 18,
+      "post": 22,
+      "delta": 4,
+      "pctChange": 0.2222,
+      "normGain": 0.5714,
+      "status": "เพิ่มขึ้น"
+    },
+    {
+      "name": "สิทธิชัย บุญนนท์",
+      "nick": "โด้",
+      "room": "ม.4/8",
+      "pre": 9,
+      "post": 13,
+      "delta": 4,
+      "pctChange": 0.4444,
+      "normGain": 0.25,
+      "status": "เพิ่มขึ้น"
+    },
+    {
+      "name": "อาทิตย์ บูรณะไพบูลย์",
+      "nick": "เบส",
+      "room": "ม.4/7",
+      "pre": 15,
+      "post": 19,
+      "delta": 4,
+      "pctChange": 0.2667,
+      "normGain": 0.4,
+      "status": "เพิ่มขึ้น"
+    },
+    {
+      "name": "ณัฐณิชา ศรีเสริม",
+      "nick": "เนย",
+      "room": "ม.4/8",
+      "pre": 17,
+      "post": 20,
+      "delta": 3,
+      "pctChange": 0.1765,
+      "normGain": 0.375,
+      "status": "เพิ่มขึ้น"
+    },
+    {
+      "name": "ธารารินทร์ พลนำ",
+      "nick": "นํ้า",
+      "room": "ม.4/8",
+      "pre": 12,
+      "post": 15,
+      "delta": 3,
+      "pctChange": 0.25,
+      "normGain": 0.2308,
+      "status": "เพิ่มขึ้น"
+    },
+    {
+      "name": "วรวุฒิ หมื่นรัตน์",
+      "nick": "เก้า",
+      "room": "ม.4/8",
+      "pre": 15,
+      "post": 17,
+      "delta": 2,
+      "pctChange": 0.1333,
+      "normGain": 0.2,
+      "status": "เพิ่มขึ้น"
+    },
+    {
+      "name": "ภาณุวัฒน์ ตั้งยศพัฒน์",
+      "nick": "เตอร์",
+      "room": "ม.4/7",
+      "pre": 20,
+      "post": 22,
+      "delta": 2,
+      "pctChange": 0.1,
+      "normGain": 0.4,
+      "status": "เพิ่มขึ้น"
+    },
+    {
+      "name": "จิรายุ บุดตะคุ",
+      "nick": "พีพี",
+      "room": "ม.4/8",
+      "pre": 8,
+      "post": 9,
+      "delta": 1,
+      "pctChange": 0.125,
+      "normGain": 0.0588,
+      "status": "เพิ่มขึ้น"
+    },
+    {
+      "name": "นาย ศรัณย์ เสาใสศรี",
+      "nick": "กันต์",
+      "room": "ม.4/8",
+      "pre": 19,
+      "post": 18,
+      "delta": -1,
+      "pctChange": -0.0526,
+      "normGain": -0.1667,
+      "status": "ลดลง"
+    },
+    {
+      "name": "นส.มนฑิรา คะครรัมย์",
+      "nick": "23.0",
+      "room": "ม.4/7",
+      "pre": 22,
+      "post": 21,
+      "delta": -1,
+      "pctChange": -0.0455,
+      "normGain": -0.3333,
+      "status": "ลดลง"
+    },
+    {
+      "name": "สุปรีดา เนืองนุช",
+      "nick": "คิว",
+      "room": "ม.4/7",
+      "pre": 19,
+      "post": 17,
+      "delta": -2,
+      "pctChange": -0.1053,
+      "normGain": -0.3333,
+      "status": "ลดลง"
+    },
+    {
+      "name": "นายสรายุทธ โยธา",
+      "nick": "ยุทธ",
+      "room": "ม.4/7",
+      "pre": 22,
+      "post": 20,
+      "delta": -2,
+      "pctChange": -0.0909,
+      "normGain": -0.6667,
+      "status": "ลดลง"
+    },
+    {
+      "name": "รีมา เชรฐตรี",
+      "nick": "รีมา",
+      "room": "ม.4/7",
+      "pre": 23,
+      "post": 19,
+      "delta": -4,
+      "pctChange": -0.1739,
+      "normGain": -2.0,
+      "status": "ลดลง"
+    }
+  ],
+  "items": [
+    {
+      "q": 1,
+      "topic": "รายรับ-รายจ่าย",
+      "short": "ไม่เป็นรายรับ",
+      "answer": "วงเงินบัตรเครดิต",
+      "type": "choice",
+      "question": "1. ข้อใดต่อไปนี้ไม่เป็นรายรับ",
+      "prePct": 0.6429,
+      "postPct": 0.8222,
+      "deltaPct": 0.1793
+    },
+    {
+      "q": 2,
+      "topic": "รายรับ-รายจ่าย",
+      "short": "บริหารกระแสเงินสด",
+      "answer": "รับทุกสิ้นวัน วันละ 500 บาท",
+      "type": "choice",
+      "question": "2. เราทำงานพิเศษอยู่ที่บริษัทแห่งหนึ่ง 5 วันต่อสัปดาห์ ได้รับค่าจ้างวันละ 500 บาท เจ้านายให้เราเลือกว่าจะรับเงินแบบใด ตัวเลือกใดต่อไปนี้ดีที่สุดในการบริหารกระแสเงินสด",
+      "prePct": 0.25,
+      "postPct": 0.3333,
+      "deltaPct": 0.0833
+    },
+    {
+      "q": 3,
+      "topic": "รายรับ-รายจ่าย",
+      "short": "ดอกเบี้ยทบต้น 2 ปี",
+      "answer": "121 บาท",
+      "type": "numeric",
+      "question": "3. เด็กชายออมสินนำเงินไปฝากธนาคาร ฿100 โดยเขาจะได้รับดอกเบี้ยในอัตรา 10% ต่อปี ถ้าออมสินไม่ถอนเงินเลยเป็นเวลา 2 ปี เขาจะมีเงินในธนาคารกี่บาท",
+      "prePct": 0.2857,
+      "postPct": 0.6667,
+      "deltaPct": 0.381
+    },
+    {
+      "q": 4,
+      "topic": "พฤติกรรมผู้บริโภค",
+      "short": "อคติผู้บริโภค",
+      "answer": "SIMILARITY BIAS",
+      "type": "choice",
+      "question": "4. ปั้นเคยได้กำไรจากซื้อหุ้นธนาคารมาตลอด จึงซื้อแต่หุ้นธนาคารนั้นอย่างเดียว โดยไม่สนใจศึกษาหุ้นตัวอื่น ๆ เลย จากเหตุการณ์นี้ปั้นมีอคติของผู้บริโภคแบบไหน",
+      "prePct": 0.5357,
+      "postPct": 0.7111,
+      "deltaPct": 0.1754
+    },
+    {
+      "q": 5,
+      "topic": "พฤติกรรมผู้บริโภค",
+      "short": "ค่าใช้จ่ายจำเป็นน้อยสุด",
+      "answer": "นาฬิกาข้อมือ",
+      "type": "choice",
+      "question": "5. ค่าใช้จ่ายในข้อใดต่อไปนี้จำเป็นน้อยที่สุดสำหรับเด็กในวัยเรียน",
+      "prePct": 0.5714,
+      "postPct": 0.8,
+      "deltaPct": 0.2286
+    },
+    {
+      "q": 6,
+      "topic": "พฤติกรรมผู้บริโภค",
+      "short": "ลดรายจ่ายเพื่อเป้าหมาย",
+      "answer": "น้ำอัดลม → น้ำเปล่า เพื่อซ่อมมือถือ",
+      "type": "choice",
+      "question": "6. หากเราต้องการลดรายจ่ายลง เพื่อเก็บเงินให้ถึงเป้าหมาย ข้อใดต่อไปนี้ถูกต้องที่สุด",
+      "prePct": 0.7857,
+      "postPct": 0.8667,
+      "deltaPct": 0.081
+    },
+    {
+      "q": 7,
+      "topic": "พฤติกรรมผู้บริโภค",
+      "short": "ข้อผิดในการเลือกซื้อ",
+      "answer": "ซื้อของถูกผิดปกติทันที",
+      "type": "choice",
+      "question": "7. ข้อใดต่อไปนี้ผิดในเรื่องการเลือกซื้อสินค้า",
+      "prePct": 0.6786,
+      "postPct": 0.7333,
+      "deltaPct": 0.0547
+    },
+    {
+      "q": 8,
+      "topic": "พฤติกรรมผู้บริโภค",
+      "short": "ความคุ้มค่าต่อหน่วย",
+      "answer": "กล่องเล็ก 2 กล่อง (8 บาท)",
+      "type": "choice",
+      "question": "8. ต้องการซื้อคุกกี้ให้ได้ 8 ชิ้น แบบไหนคุ้มค่าที่สุด",
+      "prePct": 0.4286,
+      "postPct": 0.4889,
+      "deltaPct": 0.0603
+    },
+    {
+      "q": 9,
+      "topic": "พฤติกรรมผู้บริโภค",
+      "short": "หลักการเลือกซื้อ",
+      "answer": "คุณภาพที่จำเป็น ราคาเหมาะสม",
+      "type": "choice",
+      "question": "ข้อใดต่อไปนี้ถูกต้องที่สุด",
+      "prePct": 0.8214,
+      "postPct": 0.8889,
+      "deltaPct": 0.0675
+    },
+    {
+      "q": 10,
+      "topic": "การออม/เป้าหมาย",
+      "short": "ออมเงินต่อสัปดาห์",
+      "answer": "30 บาท/สัปดาห์",
+      "type": "numeric",
+      "question": "10. ออมสินอยากประหยัดค่าใช้จ่าย เพื่อซื้อรองเท้าผ้าใบราคา ฿300 ในอีก 10 สัปดาห์ข้างหน้า ออมสินจะต้องออมเงินกี่บาทต่อสัปดาห์",
+      "prePct": 0.6786,
+      "postPct": 0.8889,
+      "deltaPct": 0.2103
+    },
+    {
+      "q": 11,
+      "topic": "การออม/เป้าหมาย",
+      "short": "ส่วนต่างที่ต้องเพิ่ม",
+      "answer": "10 บาท/สัปดาห์",
+      "type": "numeric",
+      "question": "11. จากข้อ 10. ในเดือนที่ผ่านมาออมสินมีเงินคงเหลือต่อสัปดาห์อยู่ที่ ฿20 ซึ่งยังไม่พอกับการออมเงินซื้อรองเท้า ออมสินต้องเพิ่มรายรับหรือลดรายจ่ายอีกกี่บาทต่อสัปดาห์",
+      "prePct": 0.5,
+      "postPct": 0.7333,
+      "deltaPct": 0.2333
+    },
+    {
+      "q": 12,
+      "topic": "การออม/เป้าหมาย",
+      "short": "เงินไม่พอเป้าหมาย",
+      "answer": "ตัดรายจ่ายที่ไม่จำเป็นออกก่อน",
+      "type": "choice",
+      "question": "12. ถ้าเงินคงเหลือไม่พอกับเป้าหมายการออมที่ตั้งไว้ ข้อใดคือสิ่งที่ควรทำเป็นอันดับแรก",
+      "prePct": 0.6786,
+      "postPct": 0.7778,
+      "deltaPct": 0.0992
+    },
+    {
+      "q": 13,
+      "topic": "หนี้สิน/สินทรัพย์",
+      "short": "เงินต้นคงเหลือ",
+      "answer": "800 บาท",
+      "type": "numeric",
+      "question": "13. นายประหยัดต้องการผ่อนซื้อของราคา ฿1,000 ถ้าเขาต้องจ่ายค่างวดเดือนละ ฿150 โดยแต่ละงวดมีดอกเบี้ยคงที่เดือนละ ฿50 ถ้าเขาผ่อนไปแล้ว 2 เดือน เงินต้นจะลดลงเหลือกี่บาท",
+      "prePct": 0.3214,
+      "postPct": 0.6667,
+      "deltaPct": 0.3453
+    },
+    {
+      "q": 14,
+      "topic": "หนี้สิน/สินทรัพย์",
+      "short": "ไม่ใช่สินทรัพย์",
+      "answer": "วงเงินบัตรเครดิต",
+      "type": "choice",
+      "question": "14. ข้อใดต่อไปนี้ไม่ใช่สินทรัพย์",
+      "prePct": 0.3571,
+      "postPct": 0.6222,
+      "deltaPct": 0.2651
+    },
+    {
+      "q": 15,
+      "topic": "หนี้สิน/สินทรัพย์",
+      "short": "ตัวชี้วัดฐานะการเงิน",
+      "answer": "ความมั่งคั่งสุทธิ",
+      "type": "choice",
+      "question": "15. ข้อใดต่อไปนี้เป็นตัวชี้วัดฐานะทางการเงินที่ดีที่สุด",
+      "prePct": 0.5,
+      "postPct": 0.6222,
+      "deltaPct": 0.1222
+    },
+    {
+      "q": 16,
+      "topic": "หนี้สิน/สินทรัพย์",
+      "short": "หนี้สินที่ดี",
+      "answer": "กู้เพื่อการศึกษาแล้วจ่ายคืนได้",
+      "type": "choice",
+      "question": "16. ข้อใดต่อไปนี้เป็นหนี้สินที่ดี",
+      "prePct": 0.75,
+      "postPct": 0.8222,
+      "deltaPct": 0.0722
+    },
+    {
+      "q": 17,
+      "topic": "ธุรกิจ/รายได้",
+      "short": "หลักการเงิน 4 ด้าน",
+      "answer": "E ลูกจ้าง และ I นักลงทุน",
+      "type": "choice",
+      "question": "17. ข้าราชการที่ลงทุนในตราสารหนี้ ได้รับรายได้แบบไหนบ้าง ในหลักการเงิน 4 ด้าน",
+      "prePct": 0.1429,
+      "postPct": 0.5333,
+      "deltaPct": 0.3904
+    },
+    {
+      "q": 18,
+      "topic": "ธุรกิจ/รายได้",
+      "short": "ปัจจัยพื้นฐานธุรกิจ",
+      "answer": "ถูกทุกข้อ",
+      "type": "choice",
+      "question": "18. ข้อใดต่อไปนี้เป็นปัจจัยพื้นฐานในการทำธุรกิจ",
+      "prePct": 0.6429,
+      "postPct": 0.9333,
+      "deltaPct": 0.2904
+    },
+    {
+      "q": 19,
+      "topic": "ธุรกิจ/รายได้",
+      "short": "จุดคุ้มทุน (จาน)",
+      "answer": "10 จาน",
+      "type": "numeric",
+      "question": "19. เจตเปิดร้านขายข้าวผัด ราคาจานละ 50 บาท แต่ละจานมีต้นทุนเฉลี่ย 30 บาท ถ้าเจตจ่ายค่าสร้างและตกแต่งร้านไป 200 บาท เขาจะต้องขายกี่จานถึงจะคุ้มทุน",
+      "prePct": 0.4286,
+      "postPct": 0.6889,
+      "deltaPct": 0.2603
+    },
+    {
+      "q": 20,
+      "topic": "ธุรกิจ/รายได้",
+      "short": "ระยะเวลาคืนทุน (วัน)",
+      "answer": "2 วัน",
+      "type": "numeric",
+      "question": "20. จากข้อ 19. หากร้านของเจตขายได้ 5 จานต่อวัน เจตจะต้องใช้เวลากี่วันถึงจะคืนทุน",
+      "prePct": 0.5714,
+      "postPct": 0.6222,
+      "deltaPct": 0.0508
+    },
+    {
+      "q": 21,
+      "topic": "การลงทุน",
+      "short": "นิยามการลงทุน",
+      "answer": "ซื้อสินทรัพย์โดยหวังผลตอบแทน",
+      "type": "choice",
+      "question": "21. การลงทุนคืออะไร",
+      "prePct": 0.6429,
+      "postPct": 0.9556,
+      "deltaPct": 0.3127
+    },
+    {
+      "q": 22,
+      "topic": "การลงทุน",
+      "short": "นิยามความเสี่ยง",
+      "answer": "ความไม่แน่นอนของผลตอบแทน",
+      "type": "choice",
+      "question": "22. ความเสี่ยงคืออะไร",
+      "prePct": 0.8214,
+      "postPct": 0.8444,
+      "deltaPct": 0.023
+    },
+    {
+      "q": 23,
+      "topic": "การลงทุน",
+      "short": "พฤติกรรมลงทุนที่ดี",
+      "answer": "ศึกษาข้อมูล + กระจายความเสี่ยง",
+      "type": "choice",
+      "question": "23. ข้อใดเป็นพฤติกรรมที่ดีในการลงทุน",
+      "prePct": 0.9286,
+      "postPct": 0.8,
+      "deltaPct": -0.1286
+    },
+    {
+      "q": 24,
+      "topic": "การลงทุน",
+      "short": "กองทุนรวม",
+      "answer": "รวมเงินให้ผู้จัดการกองทุนลงทุน",
+      "type": "choice",
+      "question": "24. ข้อใดอธิบาย \"กองทุนรวม (Mutual Fund)\" ได้ถูกต้องที่สุด",
+      "prePct": 0.6429,
+      "postPct": 0.6889,
+      "deltaPct": 0.046
+    },
+    {
+      "q": 25,
+      "topic": "การลงทุน",
+      "short": "สินทรัพย์เสี่ยงสูงสุด",
+      "answer": "เปิดธุรกิจของตัวเอง",
+      "type": "choice",
+      "question": "25. การลงทุนในสินทรัพย์ต่อไปนี้ ประเภทใดมีความเสี่ยงสูงที่สุด",
+      "prePct": 0.4286,
+      "postPct": 0.7111,
+      "deltaPct": 0.2825
+    }
+  ],
+  "topics": [
+    {
+      "topic": "รายรับ-รายจ่าย",
+      "qs": [
+        1,
+        2,
+        3
+      ],
+      "prePct": 0.3929,
+      "postPct": 0.6074,
+      "deltaPct": 0.2145
+    },
+    {
+      "topic": "พฤติกรรมผู้บริโภค",
+      "qs": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "prePct": 0.6369,
+      "postPct": 0.7481,
+      "deltaPct": 0.1112
+    },
+    {
+      "topic": "การออม/เป้าหมาย",
+      "qs": [
+        10,
+        11,
+        12
+      ],
+      "prePct": 0.6191,
+      "postPct": 0.8,
+      "deltaPct": 0.1809
+    },
+    {
+      "topic": "หนี้สิน/สินทรัพย์",
+      "qs": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "prePct": 0.4821,
+      "postPct": 0.6833,
+      "deltaPct": 0.2012
+    },
+    {
+      "topic": "ธุรกิจ/รายได้",
+      "qs": [
+        17,
+        18,
+        19,
+        20
+      ],
+      "prePct": 0.4465,
+      "postPct": 0.6944,
+      "deltaPct": 0.2479
+    },
+    {
+      "topic": "การลงทุน",
+      "qs": [
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "prePct": 0.6929,
+      "postPct": 0.8,
+      "deltaPct": 0.1071
+    }
+  ],
+  "distribution": {
+    "bands": [
+      "0-4 (ต้องปรับปรุงมาก)",
+      "5-9 (ต้องปรับปรุง)",
+      "10-14 (พอใช้)",
+      "15-19 (ดี)",
+      "20-25 (ดีมาก)"
+    ],
+    "pre": [
+      1,
+      6,
+      8,
+      8,
+      5
+    ],
+    "post": [
+      1,
+      3,
+      5,
+      16,
+      20
+    ]
+  },
+  "byRoom": [
+    {
+      "room": "ม.4/7",
+      "nPre": 16,
+      "meanPre": 15.12,
+      "nPost": 22,
+      "meanPost": 17.55,
+      "nMatched": 13,
+      "meanDelta": 3.69
+    },
+    {
+      "room": "ม.4/8",
+      "nPre": 12,
+      "meanPre": 12.58,
+      "nPost": 23,
+      "meanPost": 18.87,
+      "nMatched": 9,
+      "meanDelta": 3.56
+    }
+  ],
+  "behaviour": [
+    {
+      "question": "1. การบันทึกรายรับ-รายจ่าย",
+      "options": [
+        {
+          "label": "3) ทำบ้างไม่ทำบ้าง",
+          "pre": 11,
+          "post": 14,
+          "prePct": 0.3929,
+          "postPct": 0.3111
+        },
+        {
+          "label": "2) เคยทำแต่ไม่ได้ทำแล้ว",
+          "pre": 7,
+          "post": 17,
+          "prePct": 0.25,
+          "postPct": 0.3778
+        },
+        {
+          "label": "4) ทำอยู่สม่ำเสมอ",
+          "pre": 8,
+          "post": 5,
+          "prePct": 0.2857,
+          "postPct": 0.1111
+        },
+        {
+          "label": "1) ไม่ได้ทำเลย",
+          "pre": 2,
+          "post": 9,
+          "prePct": 0.0714,
+          "postPct": 0.2
+        }
+      ],
+      "nPre": 28,
+      "nPost": 45
+    },
+    {
+      "question": "2. การวางเป้าหมายทางการเงิน",
+      "options": [
+        {
+          "label": "4) เคยทำสำเร็จแล้ว",
+          "pre": 12,
+          "post": 25,
+          "prePct": 0.4286,
+          "postPct": 0.5556
+        },
+        {
+          "label": "3) เคยทำแต่ไม่สำเร็จ",
+          "pre": 12,
+          "post": 16,
+          "prePct": 0.4286,
+          "postPct": 0.3556
+        },
+        {
+          "label": "2) ไม่เคยทำ",
+          "pre": 4,
+          "post": 4,
+          "prePct": 0.1429,
+          "postPct": 0.0889
+        }
+      ],
+      "nPre": 28,
+      "nPost": 45
+    },
+    {
+      "question": "3. การหารายได้",
+      "options": [
+        {
+          "label": "2) เคยคิดจะทำ",
+          "pre": 13,
+          "post": 17,
+          "prePct": 0.4643,
+          "postPct": 0.3778
+        },
+        {
+          "label": "3) เคยทำ",
+          "pre": 9,
+          "post": 18,
+          "prePct": 0.3214,
+          "postPct": 0.4
+        },
+        {
+          "label": "4) ทำอยู่สม่ำเสมอ",
+          "pre": 2,
+          "post": 7,
+          "prePct": 0.0714,
+          "postPct": 0.1556
+        },
+        {
+          "label": "1) ยังไม่ได้คิดจะทำ",
+          "pre": 4,
+          "post": 3,
+          "prePct": 0.1429,
+          "postPct": 0.0667
+        }
+      ],
+      "nPre": 28,
+      "nPost": 45
+    },
+    {
+      "question": "4. เคยเป็นเจ้าหนี้หรือให้คนอื่นยืมเงินมั้ย?",
+      "options": [
+        {
+          "label": "2) เคยให้ ได้คืนบ้างไม่ได้บ้าง",
+          "pre": 15,
+          "post": 15,
+          "prePct": 0.5357,
+          "postPct": 0.3333
+        },
+        {
+          "label": "3) เคย แต่ได้คืนตลอด",
+          "pre": 7,
+          "post": 15,
+          "prePct": 0.25,
+          "postPct": 0.3333
+        },
+        {
+          "label": "4) ไม่เคยเลย",
+          "pre": 6,
+          "post": 12,
+          "prePct": 0.2143,
+          "postPct": 0.2667
+        },
+        {
+          "label": "1) เคย ไม่เคยได้คืนเลย",
+          "pre": 0,
+          "post": 3,
+          "prePct": 0.0,
+          "postPct": 0.0667
+        }
+      ],
+      "nPre": 28,
+      "nPost": 45
+    },
+    {
+      "question": "5. เคยยืมเงินคนอื่นมั้ย?",
+      "options": [
+        {
+          "label": "3) เคย แต่คืนตรงเวลา",
+          "pre": 10,
+          "post": 22,
+          "prePct": 0.3571,
+          "postPct": 0.4889
+        },
+        {
+          "label": "2) เคย แต่คืนช้าบ้าง",
+          "pre": 10,
+          "post": 13,
+          "prePct": 0.3571,
+          "postPct": 0.2889
+        },
+        {
+          "label": "4) ไม่เคยเลย",
+          "pre": 6,
+          "post": 9,
+          "prePct": 0.2143,
+          "postPct": 0.2
+        },
+        {
+          "label": "1) เคย และไม่ได้คืน",
+          "pre": 2,
+          "post": 1,
+          "prePct": 0.0714,
+          "postPct": 0.0222
+        }
+      ],
+      "nPre": 28,
+      "nPost": 45
+    }
+  ],
+  "answerKey": [
+    {
+      "q": 1,
+      "topic": "รายรับ-รายจ่าย",
+      "type": "choice",
+      "correct": "2",
+      "label": "วงเงินบัตรเครดิต"
+    },
+    {
+      "q": 2,
+      "topic": "รายรับ-รายจ่าย",
+      "type": "choice",
+      "correct": "1",
+      "label": "รับทุกสิ้นวัน วันละ 500 บาท"
+    },
+    {
+      "q": 3,
+      "topic": "รายรับ-รายจ่าย",
+      "type": "numeric",
+      "correct": 121,
+      "label": "121 บาท"
+    },
+    {
+      "q": 4,
+      "topic": "พฤติกรรมผู้บริโภค",
+      "type": "choice",
+      "correct": "3",
+      "label": "SIMILARITY BIAS"
+    },
+    {
+      "q": 5,
+      "topic": "พฤติกรรมผู้บริโภค",
+      "type": "choice",
+      "correct": "4",
+      "label": "นาฬิกาข้อมือ"
+    },
+    {
+      "q": 6,
+      "topic": "พฤติกรรมผู้บริโภค",
+      "type": "choice",
+      "correct": "1",
+      "label": "น้ำอัดลม → น้ำเปล่า เพื่อซ่อมมือถือ"
+    },
+    {
+      "q": 7,
+      "topic": "พฤติกรรมผู้บริโภค",
+      "type": "choice",
+      "correct": "3",
+      "label": "ซื้อของถูกผิดปกติทันที"
+    },
+    {
+      "q": 8,
+      "topic": "พฤติกรรมผู้บริโภค",
+      "type": "choice",
+      "correct": "1",
+      "label": "กล่องเล็ก 2 กล่อง (8 บาท)"
+    },
+    {
+      "q": 9,
+      "topic": "พฤติกรรมผู้บริโภค",
+      "type": "choice",
+      "correct": "3",
+      "label": "คุณภาพที่จำเป็น ราคาเหมาะสม"
+    },
+    {
+      "q": 10,
+      "topic": "การออม/เป้าหมาย",
+      "type": "numeric",
+      "correct": 30,
+      "label": "30 บาท/สัปดาห์"
+    },
+    {
+      "q": 11,
+      "topic": "การออม/เป้าหมาย",
+      "type": "numeric",
+      "correct": 10,
+      "label": "10 บาท/สัปดาห์"
+    },
+    {
+      "q": 12,
+      "topic": "การออม/เป้าหมาย",
+      "type": "choice",
+      "correct": "2",
+      "label": "ตัดรายจ่ายที่ไม่จำเป็นออกก่อน"
+    },
+    {
+      "q": 13,
+      "topic": "หนี้สิน/สินทรัพย์",
+      "type": "numeric",
+      "correct": 800,
+      "label": "800 บาท"
+    },
+    {
+      "q": 14,
+      "topic": "หนี้สิน/สินทรัพย์",
+      "type": "choice",
+      "correct": "4",
+      "label": "วงเงินบัตรเครดิต"
+    },
+    {
+      "q": 15,
+      "topic": "หนี้สิน/สินทรัพย์",
+      "type": "choice",
+      "correct": "3",
+      "label": "ความมั่งคั่งสุทธิ"
+    },
+    {
+      "q": 16,
+      "topic": "หนี้สิน/สินทรัพย์",
+      "type": "choice",
+      "correct": "2",
+      "label": "กู้เพื่อการศึกษาแล้วจ่ายคืนได้"
+    },
+    {
+      "q": 17,
+      "topic": "ธุรกิจ/รายได้",
+      "type": "choice",
+      "correct": "4",
+      "label": "E ลูกจ้าง และ I นักลงทุน"
+    },
+    {
+      "q": 18,
+      "topic": "ธุรกิจ/รายได้",
+      "type": "choice",
+      "correct": "4",
+      "label": "ถูกทุกข้อ"
+    },
+    {
+      "q": 19,
+      "topic": "ธุรกิจ/รายได้",
+      "type": "numeric",
+      "correct": 10,
+      "label": "10 จาน"
+    },
+    {
+      "q": 20,
+      "topic": "ธุรกิจ/รายได้",
+      "type": "numeric",
+      "correct": 2,
+      "label": "2 วัน"
+    },
+    {
+      "q": 21,
+      "topic": "การลงทุน",
+      "type": "choice",
+      "correct": "3",
+      "label": "ซื้อสินทรัพย์โดยหวังผลตอบแทน"
+    },
+    {
+      "q": 22,
+      "topic": "การลงทุน",
+      "type": "choice",
+      "correct": "4",
+      "label": "ความไม่แน่นอนของผลตอบแทน"
+    },
+    {
+      "q": 23,
+      "topic": "การลงทุน",
+      "type": "choice",
+      "correct": "4",
+      "label": "ศึกษาข้อมูล + กระจายความเสี่ยง"
+    },
+    {
+      "q": 24,
+      "topic": "การลงทุน",
+      "type": "choice",
+      "correct": "2",
+      "label": "รวมเงินให้ผู้จัดการกองทุนลงทุน"
+    },
+    {
+      "q": 25,
+      "topic": "การลงทุน",
+      "type": "choice",
+      "correct": "3",
+      "label": "เปิดธุรกิจของตัวเอง"
+    }
+  ]
+};
+const NS = "http://www.w3.org/2000/svg";
+const pct = v => (v*100).toFixed(1) + "%";
+const pct0 = v => Math.round(v*100) + "%";
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+/* ---------- tooltip ---------- */
+const tip = document.getElementById("tip");
+function bindTip(el, html){
+  el.addEventListener("pointerenter", e => { tip.innerHTML = html; tip.style.opacity = 1; move(e); });
+  el.addEventListener("pointermove", move);
+  el.addEventListener("pointerleave", () => tip.style.opacity = 0);
+  el.setAttribute("tabindex","0");
+  el.addEventListener("focus", e => { tip.innerHTML = html; tip.style.opacity = 1;
+    const r = el.getBoundingClientRect(); tip.style.left = r.left+"px"; tip.style.top = (r.top-10)+"px"; });
+  el.addEventListener("blur", () => tip.style.opacity = 0);
+  function move(e){
+    const pad = 14, w = tip.offsetWidth, h = tip.offsetHeight;
+    let x = e.clientX + pad, y = e.clientY - h - pad;
+    if (x + w > innerWidth - 8) x = e.clientX - w - pad;
+    if (y < 8) y = e.clientY + pad;
+    tip.style.left = x+"px"; tip.style.top = y+"px";
+  }
+}
+function el(tag, attrs, parent){
+  const n = document.createElementNS(NS, tag);
+  for (const k in attrs) n.setAttribute(k, attrs[k]);
+  if (parent) parent.appendChild(n);
+  return n;
+}
+function legend(id, items){
+  document.getElementById(id).innerHTML = items.map(i =>
+    `<span class="k"><span class="swatch" style="background:${i.c}"></span>${i.l}</span>`).join("");
+}
+
+/* ---------- 1. tiles ---------- */
+(function(){
+  const s = DATA.summary, m = s.matched;
+  const dirCls = m.meanDelta > 0 ? "up" : m.meanDelta < 0 ? "down" : "same";
+  const arrow = m.meanDelta > 0 ? "▲" : m.meanDelta < 0 ? "▼" : "▬";
+  const t = [
+    {lab:"ผู้ทำ Pre Test", big:s.pre.n, foot:"คน · เฉลี่ย " + s.pre.mean + "/25 (" + pct(s.pre.pct) + ")"},
+    {lab:"ผู้ทำ Post Test", big:s.post.n, foot:"คน · เฉลี่ย " + s.post.mean + "/25 (" + pct(s.post.pct) + ")"},
+    {lab:"คะแนนเฉลี่ยกลุ่มจับคู่", big:m.meanPre + " → " + m.meanPost,
+     foot:`<span class="arrow ${dirCls}">${arrow} ${m.meanDelta > 0 ? "+" : ""}${m.meanDelta} คะแนน</span> จาก ${m.n} คน`, sm:1},
+    {lab:"อัตราการเพิ่มขึ้น", big:(m.growthRate>0?"+":"") + pct(m.growthRate),
+     foot:"Normalized Gain " + m.meanNormGain.toFixed(2), cls:dirCls},
+    {lab:"สัดส่วนผู้ที่คะแนนเพิ่มขึ้น", big:pct0(m.improvedPct),
+     foot:`เพิ่ม ${m.improved} · เท่าเดิม ${m.same} · ลดลง ${m.declined}`},
+  ];
+  document.getElementById("tiles").innerHTML = t.map(x =>
+    `<div class="tile"><div class="lab">${x.lab}</div>
+     <div class="big ${x.cls||""}" style="${x.sm?"font-size:25px":""}">${x.big}</div>
+     <div class="foot">${x.foot}</div></div>`).join("");
+})();
+
+/* ---------- 2. distribution grouped bars ---------- */
+(function(){
+  legend("leg1",[{c:"var(--pre)",l:"Pre Test"},{c:"var(--post)",l:"Post Test"}]);
+  const d = DATA.distribution;
+  const W = Math.max(560, d.bands.length*120), H = 300;
+  const M = {t:16,r:16,b:56,l:38};
+  const iw = W-M.l-M.r, ih = H-M.t-M.b;
+  const max = Math.max(...d.pre, ...d.post, 1);
+  const yMax = Math.ceil(max/5)*5 || 5;
+  const svg = el("svg",{viewBox:`0 0 ${W} ${H}`,width:W,height:H,role:"img",
+    "aria-label":"จำนวนผู้ทำแบบทดสอบในแต่ละช่วงคะแนน เปรียบเทียบ Pre และ Post"});
+  const y = v => M.t + ih - (v/yMax)*ih;
+  for(let i=0;i<=5;i++){
+    const v = yMax*i/5;
+    el("line",{class:"gridline",x1:M.l,x2:W-M.r,y1:y(v),y2:y(v)},svg);
+    el("text",{class:"axis-text",x:M.l-8,y:y(v)+4,"text-anchor":"end"},svg).textContent = v;
+  }
+  const bw = iw/d.bands.length, bar = Math.min(34,(bw-14)/2);
+  d.bands.forEach((b,i)=>{
+    const cx = M.l + bw*i + bw/2;
+    [["pre",d.pre[i],css("--pre"),-bar-1],["post",d.post[i],css("--post"),1]].forEach(([k,v,c,off])=>{
+      const h = Math.max(v>0?3:0,(v/yMax)*ih);
+      if(v>0){
+        const r = el("rect",{x:cx+off,y:y(v),width:bar,height:h,fill:c,rx:4,ry:4},svg);
+        r.style.cursor="pointer";
+        bindTip(r,`<b>${b}</b><div class="r"><span>${k==="pre"?"Pre Test":"Post Test"}</span><span>${v} คน</span></div>`);
+        el("text",{class:"val-text",x:cx+off+bar/2,y:y(v)-6,"text-anchor":"middle"},svg).textContent=v;
+      }
+    });
+    const parts = b.split(" (");
+    el("text",{class:"axis-text",x:cx,y:H-34,"text-anchor":"middle"},svg).textContent=parts[0];
+    el("text",{class:"cat-text",x:cx,y:H-16,"text-anchor":"middle"},svg).textContent=(parts[1]||"").replace(")","");
+  });
+  document.getElementById("chart-dist").appendChild(svg);
+})();
+
+/* ---------- 3. dumbbell ---------- */
+(function(){
+  legend("leg2",[{c:"var(--pre)",l:"Pre Test"},{c:"var(--post)",l:"Post Test"},
+                 {c:"var(--good)",l:"เพิ่มขึ้น"},{c:"var(--bad)",l:"ลดลง"}]);
+  const c = DATA.comparison, MAX = DATA.meta.maxScore;
+  const rowH = 26, M = {t:26,r:52,b:26,l:150};
+  const W = 900, H = M.t + c.length*rowH + M.b;
+  const iw = W-M.l-M.r;
+  const svg = el("svg",{viewBox:`0 0 ${W} ${H}`,width:W,height:H,role:"img",
+    "aria-label":"คะแนน Pre และ Post รายบุคคล"});
+  const x = v => M.l + (v/MAX)*iw;
+  for(let v=0;v<=MAX;v+=5){
+    el("line",{class:"gridline",x1:x(v),x2:x(v),y1:M.t-10,y2:H-M.b+2},svg);
+    el("text",{class:"axis-text",x:x(v),y:M.t-16,"text-anchor":"middle"},svg).textContent=v;
+  }
+  c.forEach((p,i)=>{
+    const yy = M.t + i*rowH + rowH/2;
+    const col = p.delta>0?css("--good"):p.delta<0?css("--bad"):css("--flat");
+    el("text",{class:"cat-text",x:M.l-12,y:yy+4,"text-anchor":"end"},svg).textContent = p.nick || p.name;
+    el("line",{x1:x(p.pre),x2:x(p.post),y1:yy,y2:yy,stroke:col,"stroke-width":2,"stroke-linecap":"round"},svg);
+    const tipHtml = `<b>${p.name}</b> (${p.nick}) · ${p.room}
+      <div class="r"><span>Pre</span><span>${p.pre}/25</span></div>
+      <div class="r"><span>Post</span><span>${p.post}/25</span></div>
+      <div class="r"><span>ส่วนต่าง</span><span>${p.delta>0?"+":""}${p.delta} (${p.pctChange!==null?(p.pctChange>0?"+":"")+pct(p.pctChange):"n/a"})</span></div>
+      <div class="r"><span>Normalized Gain</span><span>${p.normGain!==null?p.normGain.toFixed(2):"n/a"}</span></div>`;
+    [[p.pre,css("--pre")],[p.post,css("--post")]].forEach(([v,cc])=>{
+      const dot = el("circle",{cx:x(v),cy:yy,r:5.5,fill:cc,stroke:css("--card"),"stroke-width":2},svg);
+      dot.style.cursor="pointer"; bindTip(dot,tipHtml);
+    });
+    const t = el("text",{class:"val-text",x:W-M.r+8,y:yy+4,fill:col},svg);
+    t.textContent = (p.delta>0?"+":"")+p.delta;
+    const hit = el("rect",{x:M.l-140,y:yy-rowH/2,width:W-M.l+140,height:rowH,fill:"transparent"},svg);
+    hit.style.cursor="pointer"; bindTip(hit,tipHtml);
+  });
+  document.getElementById("chart-dumbbell").appendChild(svg);
+})();
+
+/* ---------- 4. topics ---------- */
+(function(){
+  legend("leg3",[{c:"var(--pre)",l:"Pre Test"},{c:"var(--post)",l:"Post Test"}]);
+  const t = DATA.topics;
+  const rowH = 54, M = {t:30,r:80,b:16,l:170};
+  const W = 860, H = M.t + t.length*rowH + M.b, iw = W-M.l-M.r;
+  const svg = el("svg",{viewBox:`0 0 ${W} ${H}`,width:W,height:H,role:"img","aria-label":"ร้อยละตอบถูกรายหมวด"});
+  const x = v => M.l + v*iw;
+  for(let v=0;v<=1.0001;v+=0.25){
+    el("line",{class:"gridline",x1:x(v),x2:x(v),y1:M.t-8,y2:H-M.b},svg);
+    el("text",{class:"axis-text",x:x(v),y:M.t-14,"text-anchor":"middle"},svg).textContent=pct0(v);
+  }
+  t.forEach((p,i)=>{
+    const yy = M.t + i*rowH;
+    el("text",{class:"cat-text",x:M.l-12,y:yy+22,"text-anchor":"end"},svg).textContent=p.topic;
+    el("text",{class:"axis-text",x:M.l-12,y:yy+37,"text-anchor":"end"},svg).textContent=p.qs.length+" ข้อ";
+    [["Pre Test",p.prePct,css("--pre"),4],["Post Test",p.postPct,css("--post"),22]].forEach(([lab,v,c,off])=>{
+      const r = el("rect",{x:M.l,y:yy+off,width:Math.max(2,v*iw),height:14,fill:c,rx:4,ry:4},svg);
+      r.style.cursor="pointer";
+      bindTip(r,`<b>${p.topic}</b><div class="r"><span>${lab}</span><span>${pct(v)}</span></div><div class="r"><span>ข้อ</span><span>${p.qs.join(", ")}</span></div>`);
+    });
+    const dcol = p.deltaPct>0?css("--good"):css("--bad");
+    el("text",{class:"val-text",x:W-M.r+10,y:yy+28,fill:dcol},svg).textContent=(p.deltaPct>0?"+":"")+(p.deltaPct*100).toFixed(1)+" จุด";
+  });
+  document.getElementById("chart-topics").appendChild(svg);
+})();
+
+/* ---------- 5. items ---------- */
+(function(){
+  legend("leg4",[{c:"var(--pre)",l:"% ถูก Pre"},{c:"var(--post)",l:"% ถูก Post"}]);
+  const host = document.getElementById("chart-items");
+  let sortKey = "q";
+  function draw(){
+    host.innerHTML = "";
+    const items = DATA.items.slice().sort((a,b)=>
+      sortKey==="q" ? a.q-b.q : sortKey==="delta" ? b.deltaPct-a.deltaPct : b.postPct-a.postPct);
+    const rowH = 34, M = {t:30,r:76,b:16,l:210};
+    const W = 900, H = M.t + items.length*rowH + M.b, iw = W-M.l-M.r;
+    const svg = el("svg",{viewBox:`0 0 ${W} ${H}`,width:W,height:H,role:"img","aria-label":"ร้อยละตอบถูกรายข้อ"});
+    const x = v => M.l + v*iw;
+    for(let v=0;v<=1.0001;v+=0.25){
+      el("line",{class:"gridline",x1:x(v),x2:x(v),y1:M.t-8,y2:H-M.b},svg);
+      el("text",{class:"axis-text",x:x(v),y:M.t-14,"text-anchor":"middle"},svg).textContent=pct0(v);
+    }
+    items.forEach((p,i)=>{
+      const yy = M.t + i*rowH;
+      el("text",{class:"cat-text",x:M.l-12,y:yy+18,"text-anchor":"end"},svg).textContent = p.q + ". " + p.short;
+      const html = `<b>ข้อ ${p.q}. ${p.short}</b><div style="color:var(--ink-3);margin:3px 0 5px">${p.question}</div>
+        <div class="r"><span>คำตอบที่ถูก</span><span>${p.answer}</span></div>
+        <div class="r"><span>% ถูก Pre</span><span>${pct(p.prePct)}</span></div>
+        <div class="r"><span>% ถูก Post</span><span>${pct(p.postPct)}</span></div>
+        <div class="r"><span>ส่วนต่าง</span><span>${(p.deltaPct>0?"+":"")+(p.deltaPct*100).toFixed(1)} จุด</span></div>`;
+      [[p.prePct,css("--pre"),2],[p.postPct,css("--post"),14]].forEach(([v,c,off])=>{
+        const r = el("rect",{x:M.l,y:yy+off,width:Math.max(2,v*iw),height:10,fill:c,rx:4,ry:4},svg);
+        r.style.cursor="pointer"; bindTip(r,html);
+      });
+      const dcol = p.deltaPct>0.001?css("--good"):p.deltaPct<-0.001?css("--bad"):css("--flat");
+      el("text",{class:"val-text",x:W-M.r+8,y:yy+18,fill:dcol},svg).textContent=(p.deltaPct>0?"+":"")+(p.deltaPct*100).toFixed(0);
+      const hit = el("rect",{x:0,y:yy-4,width:W,height:rowH,fill:"transparent"},svg);
+      hit.style.cursor="pointer"; bindTip(hit,html);
+    });
+    el("text",{class:"axis-text",x:W-M.r+8,y:M.t-14},svg).textContent="จุด %";
+    host.appendChild(svg);
+  }
+  document.querySelectorAll("#item-tabs button").forEach(b=>{
+    b.addEventListener("click",()=>{
+      document.querySelectorAll("#item-tabs button").forEach(o=>o.setAttribute("aria-selected","false"));
+      b.setAttribute("aria-selected","true"); sortKey=b.dataset.sort; draw();
+    });
+  });
+  draw();
+})();
+
+/* ---------- 6. rooms ---------- */
+(function(){
+  const r = DATA.byRoom;
+  const f = v => v===null||v===undefined ? "–" : v;
+  document.getElementById("tbl-rooms").innerHTML =
+    `<thead><tr><th>ห้อง</th><th>จำนวน Pre</th><th>เฉลี่ย Pre</th><th>จำนวน Post</th><th>เฉลี่ย Post</th><th>จับคู่ได้</th><th>ส่วนต่างเฉลี่ย</th></tr></thead><tbody>` +
+    r.map(x=>{
+      const d = x.meanDelta;
+      const cls = d===null?"same":d>0?"up":d<0?"down":"same";
+      return `<tr><td><b>${x.room}</b></td><td class="n">${x.nPre}</td><td class="n">${f(x.meanPre)}</td>
+        <td class="n">${x.nPost}</td><td class="n">${f(x.meanPost)}</td><td class="n">${x.nMatched}</td>
+        <td class="n"><span class="pill ${cls}">${d===null?"–":(d>0?"+":"")+d}</span></td></tr>`;
+    }).join("") + `</tbody>`;
+})();
+
+/* ---------- 7. behaviour ---------- */
+(function(){
+  legend("leg5",[{c:"var(--pre)",l:"Pre Test"},{c:"var(--post)",l:"Post Test"}]);
+  document.getElementById("beh-blocks").innerHTML = DATA.behaviour.map(b=>{
+    const rows = b.options.map(o=>`
+      <div class="brow">
+        <div style="color:var(--ink-2)">${o.label}</div>
+        <div class="bbars">
+          <div class="bbar"><div class="fill" style="width:${Math.max(1,o.prePct*100)}%;background:var(--pre)"></div><span class="v">${o.pre} · ${pct0(o.prePct)}</span></div>
+          <div class="bbar"><div class="fill" style="width:${Math.max(1,o.postPct*100)}%;background:var(--post)"></div><span class="v">${o.post} · ${pct0(o.postPct)}</span></div>
+        </div>
+      </div>`).join("");
+    return `<div class="beh"><h3>${b.question}</h3>${rows}
+      <div style="font-size:12px;color:var(--ink-3);margin-top:6px">ผู้ตอบ Pre ${b.nPre} คน · Post ${b.nPost} คน</div></div>`;
+  }).join("");
+})();
+
+/* ---------- 8. main table ---------- */
+(function(){
+  const host = document.getElementById("tbl-main");
+  const views = {
+    cmp(){
+      return `<thead><tr><th>#</th><th>ชื่อ-นามสกุล</th><th>ชื่อเล่น</th><th>ห้อง</th><th>Pre</th><th>Post</th><th>ผลต่าง</th><th>% เปลี่ยน</th><th>Norm. Gain</th></tr></thead><tbody>` +
+        DATA.comparison.map((p,i)=>{
+          const cls = p.delta>0?"up":p.delta<0?"down":"same";
+          return `<tr><td class="n">${i+1}</td><td>${p.name}</td><td>${p.nick}</td><td>${p.room}</td>
+          <td class="n">${p.pre}</td><td class="n">${p.post}</td>
+          <td class="n"><span class="pill ${cls}">${p.delta>0?"+":""}${p.delta}</span></td>
+          <td class="n">${p.pctChange!==null?(p.pctChange>0?"+":"")+pct(p.pctChange):"–"}</td>
+          <td class="n">${p.normGain!==null?p.normGain.toFixed(2):"–"}</td></tr>`;
+        }).join("") + `</tbody>`;
+    },
+    scores(list){
+      return `<thead><tr><th>#</th><th>ชื่อ-นามสกุล</th><th>ชื่อเล่น</th><th>ห้อง</th><th>วันที่ทำ</th><th>คะแนน</th><th>ร้อยละ</th></tr></thead><tbody>` +
+        list.map((p,i)=>`<tr><td class="n">${i+1}</td><td>${p.name}</td><td>${p.nick}</td><td>${p.room}</td>
+        <td class="n">${p.date}</td><td class="n"><b>${p.score}</b>/25</td><td class="n">${pct(p.pct)}</td></tr>`).join("") + `</tbody>`;
+    },
+    key(){
+      return `<thead><tr><th>ข้อ</th><th>หมวด</th><th>ประเด็น</th><th>ประเภท</th><th>คำตอบที่ถูก</th></tr></thead><tbody>` +
+        DATA.items.map(p=>`<tr><td class="n">${p.q}</td><td>${p.topic}</td><td>${p.short}</td>
+        <td>${p.type==="choice"?"ปรนัย":"อัตนัย"}</td><td><b>${p.answer}</b></td></tr>`).join("") + `</tbody>`;
+    }
+  };
+  function render(t){
+    host.innerHTML = t==="cmp" ? views.cmp() : t==="key" ? views.key()
+      : views.scores(t==="pre" ? DATA.preScores : DATA.postScores);
+  }
+  document.querySelectorAll("#tbl-tabs button").forEach(b=>{
+    b.addEventListener("click",()=>{
+      document.querySelectorAll("#tbl-tabs button").forEach(o=>o.setAttribute("aria-selected","false"));
+      b.setAttribute("aria-selected","true"); render(b.dataset.t);
+    });
+  });
+  render("cmp");
+})();
+</script>
+
+</body>
+</html>

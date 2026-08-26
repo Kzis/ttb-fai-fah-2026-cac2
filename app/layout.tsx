@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="th" className="h-full antialiased">
+    <html lang="th" className="h-full">
       <body
-        className="min-h-full flex flex-col"
+        className="h-full"
         style={{ fontFamily: "'ttb', 'Helvetica Neue', sans-serif" }}
       >
         {children}

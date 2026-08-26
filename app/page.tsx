@@ -82,7 +82,7 @@ export default function LandingPage() {
               className="text-xs tracking-widest uppercase"
               style={{ color: "rgba(255,255,255,0.75)", letterSpacing: "0.12em", textShadow: "0 1px 8px rgba(0,0,0,0.8)" }}
             >
-              C.A.C.2 &nbsp;·&nbsp; 24–25 ส.ค. 2569
+              C.A.C.2 Fai-Fah 2026
             </span>
           </div>
 

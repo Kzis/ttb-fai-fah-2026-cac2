@@ -1,25 +1,39 @@
 ﻿export default function LandingPage() {
   const BASE = "/ttb-fai-fah-2026-cac2";
 
+  const bgPhotos = [
+    `${BASE}/images/ends/end_1.jpg`,
+    `${BASE}/images/ends/end_2.jpg`,
+    `${BASE}/images/ends/end_3.jpg`,
+    `${BASE}/images/ends/end_4.jpg`,
+    `${BASE}/images/ends/end_5.jpg`,
+    `${BASE}/images/ends/end_6.jpg`,
+  ];
+
   return (
     <div
       className="fixed inset-0 flex flex-col"
       style={{ backgroundColor: "#080604", fontFamily: "'ttb', 'Helvetica Neue', sans-serif", overflow: "hidden" }}
     >
-      {/* === BG: single hero photo, dark + warm tint === */}
+      {/* === BG: group-photo grid === */}
       <div className="absolute inset-0" aria-hidden>
-        <img
-          src={`${BASE}/images/events/day1_5.jpg`}
-          alt=""
-          className="w-full h-full object-cover"
-          style={{ filter: "brightness(0.22) saturate(0.6)" }}
-        />
-        {/* warm left glow */}
-        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 70% 80% at 0% 100%, rgba(242,101,34,0.22) 0%, transparent 65%)" }} />
-        {/* blue right glow */}
-        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 60% 70% at 100% 0%, rgba(0,115,198,0.18) 0%, transparent 60%)" }} />
-        {/* center darkening */}
-        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(8,6,4,0.3) 0%, rgba(8,6,4,0.6) 100%)" }} />
+        {/* 3x2 photo grid */}
+        <div className="w-full h-full grid grid-cols-3 grid-rows-2">
+          {bgPhotos.map((src, i) => (
+            <div key={i} className="overflow-hidden">
+              <img
+                src={src}
+                alt=""
+                className="w-full h-full object-cover"
+                style={{ filter: "brightness(0.28) saturate(0.55)", transform: "scale(1.06)" }}
+              />
+            </div>
+          ))}
+        </div>
+        {/* vignette + warm/cool glow */}
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 90% at 15% 100%, rgba(242,101,34,0.25) 0%, transparent 55%)" }} />
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 65% 70% at 90% 5%, rgba(0,115,198,0.2) 0%, transparent 55%)" }} />
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 100% 60% at 50% 50%, rgba(8,6,4,0.25) 0%, rgba(8,6,4,0.72) 100%)" }} />
       </div>
 
       {/* === CONTENT === */}
@@ -30,23 +44,22 @@
           <img
             src={`${BASE}/logo-ttb.webp`}
             alt="TTB Foundation"
-            style={{ height: "clamp(32px, 5vw, 48px)", width: "auto", filter: "brightness(0) invert(1)", opacity: 0.9 }}
+            style={{ height: "clamp(30px, 5vw, 44px)", width: "auto", filter: "brightness(0) invert(1)", opacity: 0.88 }}
           />
           <a
             href="https://ttbfoundation.org"
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs tracking-widest"
-            style={{ color: "rgba(255,255,255,0.25)", letterSpacing: "0.1em" }}
+            style={{ color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" }}
           >
             ttbfoundation.org ↗
           </a>
         </header>
 
-        {/* ── MIDDLE: main content ── */}
+        {/* ── MIDDLE ── */}
         <main className="flex-1 flex flex-col justify-center gap-5 sm:gap-7">
 
-          {/* eyebrow */}
           <p
             className="text-xs tracking-widest uppercase"
             style={{ color: "#F26522", letterSpacing: "0.14em" }}
@@ -54,7 +67,6 @@
             ครงการไฟ-ฟ้า · มลนิิทีทีบี · 2569
           </p>
 
-          {/* headline */}
           <div className="flex flex-col gap-1">
             <h1
               className="text-white"
@@ -81,7 +93,6 @@
             </p>
           </div>
 
-          {/* meta line */}
           <div className="flex items-center gap-3">
             <div style={{ width: "2rem", height: "1px", backgroundColor: "#F26522", opacity: 0.6 }} />
             <span
@@ -92,7 +103,6 @@
             </span>
           </div>
 
-          {/* CTA */}
           <div className="flex flex-wrap gap-3 pt-1">
             <a
               href={`${BASE}/gallery/`}
@@ -129,18 +139,18 @@
           </div>
         </main>
 
-        {/* ── BOTTOM: footer logo ── */}
+        {/* ── BOTTOM footer ── */}
         <footer className="flex-none flex items-end justify-between py-1">
+          {/* footer logo — show original colors, no invert */}
           <img
             src={`${BASE}/logo-footer.svg`}
             alt="TTB Foundation"
-            style={{ height: "clamp(20px,3vw,28px)", width: "auto", opacity: 0.25, filter: "invert(1)" }}
+            style={{ height: "clamp(22px, 3.5vw, 34px)", width: "auto", opacity: 0.75 }}
           />
-          {/* brand line */}
           <div className="flex items-center gap-1.5">
-            <span style={{ display: "block", width: "2rem", height: "2px", backgroundColor: "#F26522", borderRadius: "99px", opacity: 0.7 }} />
+            <span style={{ display: "block", width: "2rem", height: "2px", backgroundColor: "#F26522", borderRadius: "99px", opacity: 0.75 }} />
             <span style={{ display: "block", width: "0.5rem", height: "2px", backgroundColor: "rgba(255,255,255,0.12)", borderRadius: "99px" }} />
-            <span style={{ display: "block", width: "2rem", height: "2px", backgroundColor: "#0073C6", borderRadius: "99px", opacity: 0.7 }} />
+            <span style={{ display: "block", width: "2rem", height: "2px", backgroundColor: "#0073C6", borderRadius: "99px", opacity: 0.75 }} />
           </div>
         </footer>
       </div>

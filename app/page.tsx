@@ -77,10 +77,10 @@ export default function LandingPage() {
           </div>
 
           <div className="flex items-center gap-3">
-            <div style={{ width: "2rem", height: "1px", backgroundColor: "#F26522", opacity: 0.6 }} />
+            <div style={{ width: "2rem", height: "1px", backgroundColor: "#F26522", opacity: 0.8 }} />
             <span
               className="text-xs tracking-widest uppercase"
-              style={{ color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" }}
+              style={{ color: "rgba(255,255,255,0.75)", letterSpacing: "0.12em", textShadow: "0 1px 8px rgba(0,0,0,0.8)" }}
             >
               C.A.C.2 &nbsp;·&nbsp; 24–25 ส.ค. 2569
             </span>

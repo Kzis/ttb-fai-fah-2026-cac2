@@ -88,7 +88,7 @@ export default function LandingPage() {
 
           <div className="flex flex-wrap gap-3 pt-1">
             <a
-              href={`${BASE}/gallery/`}
+              href={`${BASE}/dashboard/`}
               className="inline-flex items-center gap-2 text-white font-medium transition-all active:scale-[0.96]"
               style={{
                 backgroundColor: "#F26522",
@@ -96,6 +96,22 @@ export default function LandingPage() {
                 padding: "clamp(10px,2vw,14px) clamp(18px,3vw,28px)",
                 fontSize: "clamp(0.85rem, 2vw, 0.95rem)",
                 boxShadow: "0 0 24px rgba(242,101,34,0.3)",
+              }}
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <path d="M3 3v18h18" /><rect x="7" y="12" width="3" height="6" /><rect x="12" y="8" width="3" height="10" /><rect x="17" y="5" width="3" height="13" />
+              </svg>
+              ดูผลการทดสอบ Pre/Post
+            </a>
+            <a
+              href={`${BASE}/gallery/`}
+              className="inline-flex items-center gap-2 text-white font-medium transition-all active:scale-[0.96]"
+              style={{
+                backgroundColor: "#0073C6",
+                borderRadius: "6px",
+                padding: "clamp(10px,2vw,14px) clamp(18px,3vw,28px)",
+                fontSize: "clamp(0.85rem, 2vw, 0.95rem)",
+                boxShadow: "0 0 24px rgba(0,115,198,0.3)",
               }}
             >
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -118,23 +134,6 @@ export default function LandingPage() {
               }}
             >
               รู้จักโครงการไฟ-ฟ้า
-            </a>
-            <a
-              href={`${BASE}/dashboard/`}
-              className="inline-flex items-center gap-2 font-medium transition-all active:scale-[0.96]"
-              style={{
-                color: "rgba(255,255,255,0.55)",
-                border: "1px solid rgba(255,255,255,0.14)",
-                borderRadius: "6px",
-                padding: "clamp(10px,2vw,14px) clamp(18px,3vw,28px)",
-                fontSize: "clamp(0.85rem, 2vw, 0.95rem)",
-                backgroundColor: "rgba(255,255,255,0.04)",
-              }}
-            >
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                <path d="M3 3v18h18" /><rect x="7" y="12" width="3" height="6" /><rect x="12" y="8" width="3" height="10" /><rect x="17" y="5" width="3" height="13" />
-              </svg>
-              ผลทดสอบ Pre/Post
             </a>
           </div>
         </main>

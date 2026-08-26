@@ -366,7 +366,7 @@ export default function GalleryPage() {
           { href: "#day1", label: "Day 1 — ลงสอน", color: "var(--color-fai)" },
           { href: "#day2", label: "Day 2 — กิจกรรม", color: "var(--color-fai)" },
           { href: "#ends", label: "ภาพรวมจบกิจกรรม", color: "var(--color-fah)" },
-          { href: "#video", label: "วิดีโอบรรยากาศ", color: "var(--color-text-secondary)" },
+          { href: "#video", label: "วิดีโอบรรยากาศ", color: "var(--color-fai)" },
         ].map((tab) => (
           <a
             key={tab.href}
@@ -505,13 +505,13 @@ export default function GalleryPage() {
         {/* Divider */}
         <div style={{ borderTop: "1px solid var(--color-border)" }} />
 
-        {/* Video Placeholder */}
+        {/* Video Section */}
         <section id="video">
           <div className="flex items-end justify-between mb-8">
             <div>
               <div className="flex items-center gap-3 mb-2">
-                <span className="w-3 h-3 rounded-full" style={{ backgroundColor: "#9CA3AF" }} />
-                <span className="text-xs tracking-widest uppercase" style={{ color: "var(--color-text-secondary)" }}>
+                <span className="w-3 h-3 rounded-full" style={{ backgroundColor: "var(--color-fai)" }} />
+                <span className="text-xs tracking-widest uppercase" style={{ color: "var(--color-fai)" }}>
                   วิดีโอ
                 </span>
               </div>
@@ -526,27 +526,39 @@ export default function GalleryPage() {
                 วิดีโอบรรยากาศ
               </h2>
               <p className="mt-1 text-sm" style={{ color: "var(--color-text-secondary)" }}>
-                กำลังเพิ่มวิดีโอบรรยากาศการร่วมกิจกรรม
+                2 วิดีโอ · บรรยากาศการร่วมกิจกรรมไฟ-ฟ้า
               </p>
             </div>
           </div>
-          <div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
-          >
-            {[1, 2, 3].map((n) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {[
+              { src: `${BASE}/video/game_picture.mp4`, title: "บรรยากาศกิจกรรม" },
+              { src: `${BASE}/video/game_tiktok.mp4`, title: "Highlight กิจกรรม" },
+            ].map((v) => (
               <div
-                key={n}
-                className="relative flex flex-col items-center justify-center rounded-xl gap-4"
-                style={{
-                  aspectRatio: "16/9",
-                  backgroundColor: "var(--color-warm-neutral)",
-                  border: "2px dashed var(--color-border)",
-                }}
+                key={v.src}
+                className="overflow-hidden rounded-xl"
+                style={{ border: "1px solid var(--color-border)" }}
               >
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" style={{ color: "#C4BDB5" }}>
-                  <polygon points="5 3 19 12 5 21 5 3" />
-                </svg>
-                <span className="text-xs" style={{ color: "#C4BDB5" }}>วิดีโอ {n} — เร็วๆ นี้</span>
+                <video
+                  src={v.src}
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="w-full"
+                  style={{ backgroundColor: "#0D0B09", display: "block" }}
+                />
+                <div
+                  className="px-4 py-3"
+                  style={{ backgroundColor: "var(--color-surface)" }}
+                >
+                  <p className="text-sm font-medium" style={{ color: "var(--color-text-primary)", fontFamily: "'ttb', sans-serif" }}>
+                    {v.title}
+                  </p>
+                  <p className="text-xs mt-0.5" style={{ color: "var(--color-text-secondary)" }}>
+                    TTB Fai-Fah · 2026
+                  </p>
+                </div>
               </div>
             ))}
           </div>

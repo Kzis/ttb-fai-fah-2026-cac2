@@ -3,155 +3,109 @@
 
   return (
     <div
-      className="h-screen w-screen overflow-hidden flex flex-col"
-      style={{ backgroundColor: "#0A0806", fontFamily: "'ttb', 'Helvetica Neue', sans-serif" }}
+      className="fixed inset-0 flex flex-col"
+      style={{ backgroundColor: "#080604", fontFamily: "'ttb', 'Helvetica Neue', sans-serif", overflow: "hidden" }}
     >
-      {/* Background collage — blurred */}
-      <div className="absolute inset-0 grid grid-cols-3 grid-rows-2 gap-px pointer-events-none" aria-hidden>
-        {[1,4,8,15,20,22].map((n) => (
-          <div key={n} className="overflow-hidden">
-            <img
-              src={`${BASE}/images/events/day1_${n}.jpg`}
-              alt=""
-              className="w-full h-full object-cover"
-              style={{ filter: "saturate(0.5) brightness(0.35)", transform: "scale(1.05)" }}
-            />
-          </div>
-        ))}
+      {/* === BG: single hero photo, dark + warm tint === */}
+      <div className="absolute inset-0" aria-hidden>
+        <img
+          src={`${BASE}/images/events/day1_5.jpg`}
+          alt=""
+          className="w-full h-full object-cover"
+          style={{ filter: "brightness(0.22) saturate(0.6)" }}
+        />
+        {/* warm left glow */}
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 70% 80% at 0% 100%, rgba(242,101,34,0.22) 0%, transparent 65%)" }} />
+        {/* blue right glow */}
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 60% 70% at 100% 0%, rgba(0,115,198,0.18) 0%, transparent 60%)" }} />
+        {/* center darkening */}
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(8,6,4,0.3) 0%, rgba(8,6,4,0.6) 100%)" }} />
       </div>
 
-      {/* Gradient */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "linear-gradient(135deg, rgba(242,101,34,0.18) 0%, rgba(10,8,6,0.7) 45%, rgba(0,115,198,0.14) 100%)",
-        }}
-        aria-hidden
-      />
+      {/* === CONTENT === */}
+      <div className="relative z-10 flex flex-col h-full w-full max-w-3xl mx-auto px-6 sm:px-10 py-7 sm:py-10">
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col h-full px-5 sm:px-10 lg:px-16 py-6 sm:py-8 max-w-5xl mx-auto w-full">
-
-        {/* Top bar */}
-        <header className="flex items-center justify-between flex-none">
-          <div className="flex items-center gap-3">
-            <span
-              className="font-bold"
-              style={{ color: "#F26522", fontFamily: "'ekachon', 'ttb', sans-serif", fontSize: "clamp(1.1rem, 3vw, 1.4rem)" }}
-            >
-              ไฟ
-            </span>
-            <span style={{ color: "rgba(255,255,255,0.2)", fontSize: "1.1rem" }}>—</span>
-            <span
-              className="font-bold"
-              style={{ color: "#60B4FF", fontFamily: "'ekachon', 'ttb', sans-serif", fontSize: "clamp(1.1rem, 3vw, 1.4rem)" }}
-            >
-              ฟ้า
-            </span>
-            <span
-              className="hidden sm:block text-xs tracking-widest uppercase ml-2"
-              style={{ color: "rgba(255,255,255,0.3)" }}
-            >
-              มลนิิทีทีบี
-            </span>
-          </div>
+        {/* ── TOP: TTB Foundation logo ── */}
+        <header className="flex-none flex items-center justify-between">
+          <img
+            src={`${BASE}/logo-ttb.webp`}
+            alt="TTB Foundation"
+            style={{ height: "clamp(32px, 5vw, 48px)", width: "auto", filter: "brightness(0) invert(1)", opacity: 0.9 }}
+          />
           <a
             href="https://ttbfoundation.org"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs tracking-widest uppercase transition-colors"
-            style={{ color: "rgba(255,255,255,0.35)" }}
+            className="text-xs tracking-widest"
+            style={{ color: "rgba(255,255,255,0.25)", letterSpacing: "0.1em" }}
           >
-            ttbfoundation.org
+            ttbfoundation.org ↗
           </a>
         </header>
 
-        {/* Main content — fills remaining space */}
-        <main className="flex-1 flex flex-col justify-center gap-4 sm:gap-6 py-4">
+        {/* ── MIDDLE: main content ── */}
+        <main className="flex-1 flex flex-col justify-center gap-5 sm:gap-7">
 
-          {/* Badge */}
-          <div className="flex items-center gap-3">
-            <span
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs tracking-widest uppercase"
-              style={{
-                backgroundColor: "rgba(242,101,34,0.15)",
-                border: "1px solid rgba(242,101,34,0.4)",
-                color: "#FBCBAB",
-              }}
-            >
-              <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#F26522" }} />
-              ครงการไฟ-ฟ้า 2569
-            </span>
-            <span
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs tracking-widest uppercase"
-              style={{
-                backgroundColor: "rgba(0,115,198,0.15)",
-                border: "1px solid rgba(0,115,198,0.35)",
-                color: "#93D0FF",
-              }}
-            >
-              C.A.C.2
-            </span>
-          </div>
+          {/* eyebrow */}
+          <p
+            className="text-xs tracking-widest uppercase"
+            style={{ color: "#F26522", letterSpacing: "0.14em" }}
+          >
+            ครงการไฟ-ฟ้า · มลนิิทีทีบี · 2569
+          </p>
 
-          {/* Headline */}
-          <div>
+          {/* headline */}
+          <div className="flex flex-col gap-1">
             <h1
               className="text-white"
               style={{
                 fontFamily: "'Noto Serif Thai', serif",
-                fontSize: "clamp(2rem, 6.5vw, 4.5rem)",
+                fontSize: "clamp(2.4rem, 8vw, 5.5rem)",
                 fontWeight: 700,
-                lineHeight: 1.15,
-                letterSpacing: "-0.02em",
+                lineHeight: 1.1,
+                letterSpacing: "-0.025em",
               }}
             >
               รุ่นพี่การเงิน
             </h1>
-            <h2
-              className="mt-2"
+            <p
               style={{
                 fontFamily: "'ttb', sans-serif",
-                fontSize: "clamp(0.95rem, 2.5vw, 1.35rem)",
-                color: "rgba(255,255,255,0.55)",
+                fontSize: "clamp(0.9rem, 2.4vw, 1.2rem)",
+                color: "rgba(255,255,255,0.45)",
+                lineHeight: 1.6,
                 fontWeight: 400,
-                lineHeight: 1.5,
               }}
             >
-              สอนที่รงเรียนเตรียมอุดมพันาการ ยานนาเวศ
-            </h2>
+              รงเรียนเตรียมอุดมพันาการ ยานนาเวศ
+            </p>
           </div>
 
-          {/* Divider */}
-          <div style={{ width: "3rem", height: "1px", backgroundColor: "rgba(255,255,255,0.12)" }} />
+          {/* meta line */}
+          <div className="flex items-center gap-3">
+            <div style={{ width: "2rem", height: "1px", backgroundColor: "#F26522", opacity: 0.6 }} />
+            <span
+              className="text-xs tracking-widest uppercase"
+              style={{ color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" }}
+            >
+              C.A.C.2 &nbsp;·&nbsp; 24–25 ส.ค. 2569
+            </span>
+          </div>
 
-          {/* Description */}
-          <p
-            style={{
-              fontFamily: "'ttb', sans-serif",
-              fontSize: "clamp(0.85rem, 2vw, 1rem)",
-              color: "rgba(255,255,255,0.4)",
-              lineHeight: 1.7,
-              maxWidth: "32rem",
-            }}
-          >
-            กิจกรรมอาสาสมัครครงการไฟ-ฟ้า มลนิิทีทีบี
-            <br className="hidden sm:block" />
-            24–25 สิงหาคม 2569
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-3 pt-2">
+          {/* CTA */}
+          <div className="flex flex-wrap gap-3 pt-1">
             <a
               href={`${BASE}/gallery/`}
-              className="inline-flex items-center gap-2 px-5 py-3 font-medium text-white transition-all active:scale-[0.97]"
+              className="inline-flex items-center gap-2 text-white font-medium transition-all active:scale-[0.96]"
               style={{
                 backgroundColor: "#F26522",
-                borderRadius: "8px",
+                borderRadius: "6px",
+                padding: "clamp(10px,2vw,14px) clamp(18px,3vw,28px)",
                 fontSize: "clamp(0.85rem, 2vw, 0.95rem)",
+                boxShadow: "0 0 24px rgba(242,101,34,0.3)",
               }}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                 <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
               </svg>
               ดภาพกิจกรรม
@@ -160,34 +114,33 @@
               href="https://ttbfoundation.org/th/about-us/about-fai-fah.php"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-3 font-medium transition-all active:scale-[0.97]"
+              className="inline-flex items-center gap-2 font-medium transition-all active:scale-[0.96]"
               style={{
-                color: "rgba(255,255,255,0.65)",
-                border: "1px solid rgba(255,255,255,0.15)",
-                borderRadius: "8px",
-                backgroundColor: "rgba(255,255,255,0.05)",
+                color: "rgba(255,255,255,0.55)",
+                border: "1px solid rgba(255,255,255,0.14)",
+                borderRadius: "6px",
+                padding: "clamp(10px,2vw,14px) clamp(18px,3vw,28px)",
                 fontSize: "clamp(0.85rem, 2vw, 0.95rem)",
+                backgroundColor: "rgba(255,255,255,0.04)",
               }}
             >
               ร้จักครงการไฟ-ฟ้า
-              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                <path d="M3 8h10M9 4l4 4-4 4" />
-              </svg>
             </a>
           </div>
         </main>
 
-        {/* Bottom bar */}
-        <footer className="flex-none flex items-end justify-between pb-1">
-          {/* Date */}
-          <p className="text-xs" style={{ color: "rgba(255,255,255,0.2)" }}>
-            24–25 ส.ค. 2569
-          </p>
-          {/* Divider marks */}
+        {/* ── BOTTOM: footer logo ── */}
+        <footer className="flex-none flex items-end justify-between py-1">
+          <img
+            src={`${BASE}/logo-footer.svg`}
+            alt="TTB Foundation"
+            style={{ height: "clamp(20px,3vw,28px)", width: "auto", opacity: 0.25, filter: "invert(1)" }}
+          />
+          {/* brand line */}
           <div className="flex items-center gap-1.5">
-            <span className="w-6 h-px" style={{ backgroundColor: "#F26522", opacity: 0.5 }} />
-            <span className="w-1.5 h-px" style={{ backgroundColor: "rgba(255,255,255,0.15)" }} />
-            <span className="w-6 h-px" style={{ backgroundColor: "#0073C6", opacity: 0.5 }} />
+            <span style={{ display: "block", width: "2rem", height: "2px", backgroundColor: "#F26522", borderRadius: "99px", opacity: 0.7 }} />
+            <span style={{ display: "block", width: "0.5rem", height: "2px", backgroundColor: "rgba(255,255,255,0.12)", borderRadius: "99px" }} />
+            <span style={{ display: "block", width: "2rem", height: "2px", backgroundColor: "#0073C6", borderRadius: "99px", opacity: 0.7 }} />
           </div>
         </footer>
       </div>

@@ -1,5 +1,56 @@
 @import "tailwindcss";
 
+/* TTB Brand Fonts */
+@font-face {
+  font-family: 'ttb';
+  src: url('/ttb-fai-fah-2026-cac2/fonts/ttb-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ttb';
+  src: url('/ttb-fai-fah-2026-cac2/fonts/ttb-bold.woff2') format('woff2');
+  font-weight: 600 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ekachon';
+  src: url('/ttb-fai-fah-2026-cac2/fonts/ekachon-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ekachon';
+  src: url('/ttb-fai-fah-2026-cac2/fonts/ekachon-bold.woff2') format('woff2');
+  font-weight: 600 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Noto Serif Thai';
+  src: url('/ttb-fai-fah-2026-cac2/fonts/notoserifthai-regular-webfont.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Noto Serif Thai';
+  src: url('/ttb-fai-fah-2026-cac2/fonts/notoserifthai-medium-webfont.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Noto Serif Thai';
+  src: url('/ttb-fai-fah-2026-cac2/fonts/notoserifthai-bold-webfont.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --color-canvas: #FAFAF9;
   --color-surface: #FFFFFF;
@@ -17,7 +68,8 @@
 @theme inline {
   --color-background: var(--color-canvas);
   --color-foreground: var(--color-text-primary);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: 'ttb', 'Helvetica Neue', sans-serif;
+  --font-serif: 'Noto Serif Thai', serif;
   --font-mono: var(--font-geist-mono);
 }
 

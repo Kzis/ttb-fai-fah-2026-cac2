@@ -36,14 +36,14 @@ export default function ComingSoonPage() {
           <div className="flex items-center gap-3">
             <span
               className="text-5xl font-bold"
-              style={{ color: "var(--color-fai)", letterSpacing: "-0.02em" }}
+              style={{ color: "var(--color-fai)", letterSpacing: "-0.02em", fontFamily: "'ekachon', 'ttb', sans-serif" }}
             >
               ไฟ
             </span>
             <span style={{ color: "var(--color-border)", fontSize: "2.5rem", lineHeight: 1 }}>—</span>
             <span
               className="text-5xl font-bold"
-              style={{ color: "var(--color-fah)", letterSpacing: "-0.02em" }}
+              style={{ color: "var(--color-fah)", letterSpacing: "-0.02em", fontFamily: "'ekachon', 'ttb', sans-serif" }}
             >
               ฟ้า
             </span>
@@ -68,7 +68,7 @@ export default function ComingSoonPage() {
             className="text-5xl font-semibold"
             style={{
               color: "var(--color-text-primary)",
-              fontFamily: "'Instrument Serif', 'Newsreader', serif",
+              fontFamily: "'Noto Serif Thai', serif",
               letterSpacing: "-0.03em",
               lineHeight: "1.1",
             }}

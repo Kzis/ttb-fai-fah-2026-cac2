@@ -1,45 +1,28 @@
-﻿export default function LandingPage() {
+export default function LandingPage() {
   const BASE = "/ttb-fai-fah-2026-cac2";
-
-  const bgPhotos = [
-    `${BASE}/images/ends/end_1.jpg`,
-    `${BASE}/images/ends/end_2.jpg`,
-    `${BASE}/images/ends/end_3.jpg`,
-    `${BASE}/images/ends/end_4.jpg`,
-    `${BASE}/images/ends/end_5.jpg`,
-    `${BASE}/images/ends/end_6.jpg`,
-  ];
 
   return (
     <div
       className="fixed inset-0 flex flex-col"
       style={{ backgroundColor: "#080604", fontFamily: "'ttb', 'Helvetica Neue', sans-serif", overflow: "hidden" }}
     >
-      {/* === BG: group-photo grid === */}
+      {/* === BG: single group photo === */}
       <div className="absolute inset-0" aria-hidden>
-        {/* 3x2 photo grid */}
-        <div className="w-full h-full grid grid-cols-3 grid-rows-2">
-          {bgPhotos.map((src, i) => (
-            <div key={i} className="overflow-hidden">
-              <img
-                src={src}
-                alt=""
-                className="w-full h-full object-cover"
-                style={{ filter: "brightness(0.28) saturate(0.55)", transform: "scale(1.06)" }}
-              />
-            </div>
-          ))}
-        </div>
-        {/* vignette + warm/cool glow */}
-        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 90% at 15% 100%, rgba(242,101,34,0.25) 0%, transparent 55%)" }} />
-        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 65% 70% at 90% 5%, rgba(0,115,198,0.2) 0%, transparent 55%)" }} />
-        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 100% 60% at 50% 50%, rgba(8,6,4,0.25) 0%, rgba(8,6,4,0.72) 100%)" }} />
+        <img
+          src={`${BASE}/images/ends/end_1.jpg`}
+          alt=""
+          className="w-full h-full object-cover"
+          style={{ filter: "brightness(0.3) saturate(0.55)", transform: "scale(1.04)" }}
+        />
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 90% at 15% 100%, rgba(242,101,34,0.28) 0%, transparent 55%)" }} />
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 65% 70% at 90% 5%, rgba(0,115,198,0.22) 0%, transparent 55%)" }} />
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 100% 60% at 50% 50%, rgba(8,6,4,0.2) 0%, rgba(8,6,4,0.68) 100%)" }} />
       </div>
 
       {/* === CONTENT === */}
       <div className="relative z-10 flex flex-col h-full w-full max-w-3xl mx-auto px-6 sm:px-10 py-7 sm:py-10">
 
-        {/* ── TOP: TTB Foundation logo ── */}
+        {/* TOP: TTB Foundation logo */}
         <header className="flex-none flex items-center justify-between">
           <img
             src={`${BASE}/logo-ttb.webp`}
@@ -57,14 +40,14 @@
           </a>
         </header>
 
-        {/* ── MIDDLE ── */}
+        {/* MIDDLE */}
         <main className="flex-1 flex flex-col justify-center gap-5 sm:gap-7">
 
           <p
             className="text-xs tracking-widest uppercase"
             style={{ color: "#F26522", letterSpacing: "0.14em" }}
           >
-            ครงการไฟ-ฟ้า · มลนิิทีทีบี · 2569
+            โครงการไฟ-ฟ้า · มูลนิธิทีทีบี · 2569
           </p>
 
           <div className="flex flex-col gap-1">
@@ -89,7 +72,7 @@
                 fontWeight: 400,
               }}
             >
-              รงเรียนเตรียมอุดมพันาการ ยานนาเวศ
+              โรงเรียนเตรียมอุดมพัฒนาการ ยานนาเวศ
             </p>
           </div>
 
@@ -118,7 +101,7 @@
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                 <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
               </svg>
-              ดภาพกิจกรรม
+              ดูภาพกิจกรรม
             </a>
             <a
               href="https://ttbfoundation.org/th/about-us/about-fai-fah.php"
@@ -134,14 +117,13 @@
                 backgroundColor: "rgba(255,255,255,0.04)",
               }}
             >
-              ร้จักครงการไฟ-ฟ้า
+              รู้จักโครงการไฟ-ฟ้า
             </a>
           </div>
         </main>
 
-        {/* ── BOTTOM footer ── */}
+        {/* BOTTOM footer */}
         <footer className="flex-none flex items-end justify-between py-1">
-          {/* footer logo — show original colors, no invert */}
           <img
             src={`${BASE}/logo-footer.svg`}
             alt="TTB Foundation"
